@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Photos - KJ5QVW</title>
+
+    <link rel="icon" type="image/png" href="../android-chrome-512x512.png">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #071a33;
+            color: #222;
+        }
+
+        header {
+            background-color: #0b2a52;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+            border-bottom: 4px solid #1e90ff;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.4rem;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            font-size: 1.1rem;
+        }
+
+        nav {
+            background-color: #06152a;
+            text-align: center;
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #1e90ff;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 25px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        }
+
+        h2 {
+            color: #0b2a52;
+            margin-top: 0;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .photo-placeholder {
+            background-color: #dce5ef;
+            height: 220px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0b2a52;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #06152a;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 800px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 6px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>📷 Photos</h1>
+    <p>Photos by Liam Sanders</p>
+</header>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/radio/">Radio</a>
+    <a href="/photos/">Photos</a>
+    <a href="/personal/">Personal</a>
+</nav>
+
+<div class="container">
+
+    <section class="card">
+        <h2>Photo Gallery</h2>
+
+        <p>
+            Welcome to my photo gallery. I'll be adding
+            photos here over time.
+        </p>
+    </section>
+
+    <section class="card">
+
+        <div class="gallery">
+
+            <div class="photo-placeholder">
+                Photo 1
+            </div>
+
+            <div class="photo-placeholder">
+                Photo 2
+            </div>
+
+            <div class="photo-placeholder">
+                Photo 3
+            </div>
+
+            <div class="photo-placeholder">
+                Photo 4
+            </div>
+
+            <div class="photo-placeholder">
+                Photo 5
+            </div>
+
+            <div class="photo-placeholder">
+                Photo 6
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Liam Sanders - KJ5QVW. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
