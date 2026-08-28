@@ -1,32 +1,26 @@
 export async function onRequestPost(context) {
-
     try {
+        const body = await context.request.json();
+        const password = String(body.password || "");
 
-        const body =
-            await context.request.json();
-
-        const password =
-            body.password || "";
-
-        const expected =
-            context.env.BLOG_ADMIN_PASSWORD;
+        const expected = context.env.BLOG_ADMIN_PASSWORD;
 
         if (!expected) {
-
             return Response.json(
-                { error: "Admin password is not configured." },
+                {
+                    error: "BLOG_ADMIN_PASSWORD is not configured"
+                },
                 { status: 500 }
             );
-
         }
 
         if (password !== expected) {
-
             return Response.json(
-                { error: "Invalid password." },
+                {
+                    error: "Incorrect password"
+                },
                 { status: 401 }
             );
-
         }
 
         const headers = new Headers();
@@ -34,11 +28,6 @@ export async function onRequestPost(context) {
         headers.set(
             "Set-Cookie",
             "blog_admin=authenticated; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=86400"
-        );
-
-        headers.set(
-            "Content-Type",
-            "application/json"
         );
 
         return new Response(
@@ -51,13 +40,14 @@ export async function onRequestPost(context) {
             }
         );
 
-    } catch {
+    } catch (error) {
 
         return Response.json(
-            { error: "Invalid request." },
+            {
+                error: "Invalid request"
+            },
             { status: 400 }
         );
 
     }
-
 }
