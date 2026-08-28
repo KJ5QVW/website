@@ -1,45 +1,55 @@
+```html
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Radio - KJ5QVW</title>
+    <title>Radio - Liam Sanders - KJ5QVW</title>
 
-    <link rel="icon" type="image/png" href="../android-chrome-512x512.png">
+    <link rel="icon" type="image/png" href="../android-chrome-512x5x12.png">
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        /* ==============================
+           MAIN WEBSITE COLORS
+           ============================== */
 
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #071a33;
-            color: #222;
+            background: #071a33;
+            color: #ffffff;
         }
 
+        /* ==============================
+           HEADER
+           ============================== */
+
         header {
-            background-color: #0b2a52;
-            color: white;
+            background: #0b2a52;
+            padding: 30px 20px;
             text-align: center;
-            padding: 35px 20px;
-            border-bottom: 4px solid #1e90ff;
+            border-bottom: 3px solid #1e90ff;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.4rem;
+            font-size: 42px;
         }
 
         header p {
             margin: 8px 0 0;
-            font-size: 1.1rem;
+            font-size: 18px;
+            color: #b9d9ff;
         }
 
+        /* ==============================
+           NAVIGATION BAR
+           ============================== */
+
         nav {
-            background-color: #06152a;
+            background: #051326;
             text-align: center;
             padding: 15px;
         }
@@ -47,146 +57,287 @@
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 18px;
+            margin: 0 15px;
             font-weight: bold;
         }
 
         nav a:hover {
-            color: #1e90ff;
+            color: #4da6ff;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 35px auto;
-            padding: 0 25px;
+        /* ==============================
+           MAIN CONTENT
+           ============================== */
+
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 20px;
         }
 
         .card {
-            background-color: white;
+            background: #0b2547;
+            border: 1px solid #164b82;
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px;
             margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        h2 {
-            color: #0b2a52;
+        .card h2 {
+            color: #4da6ff;
             margin-top: 0;
         }
 
-        .radio-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+        /* ==============================
+           TABLES
+           ============================== */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        .radio-card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #28527d;
         }
 
-        .radio-card p {
-            line-height: 1.6;
+        th {
+            color: #4da6ff;
         }
+
+        /* ==============================
+           QRZ BOX
+           ============================== */
+
+        .qrz-box {
+            text-align: center;
+        }
+
+        .qrz-box p {
+            color: #b9d9ff;
+        }
+
+        .button {
+            display: inline-block;
+            background: #1261a0;
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background: #1e90ff;
+        }
+
+        /* ==============================
+           FOOTER
+           ============================== */
 
         footer {
-            background-color: #06152a;
-            color: white;
+            background: #051326;
             text-align: center;
             padding: 25px;
+            color: #9bb8d4;
             margin-top: 40px;
         }
 
-        @media (max-width: 700px) {
-            .radio-grid {
-                grid-template-columns: 1fr;
+        /* ==============================
+           MOBILE PHONE DISPLAY
+           ============================== */
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 30px;
             }
 
             nav a {
-                display: inline-block;
-                margin: 6px 10px;
+                display: block;
+                margin: 10px;
+            }
+
+            main {
+                padding: 20px 12px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th,
+            td {
+                padding: 8px;
+            }
+
+            .button {
+                display: block;
+                text-align: center;
             }
         }
     </style>
+
 </head>
 
 <body>
 
+<!-- ==============================
+     HEADER
+     ============================== -->
+
 <header>
-    <h1>📻 Radio</h1>
-    <p>KJ5QVW Amateur Radio</p>
+
+    <h1>KJ5QVW</h1>
+
+    <p>
+        Liam Sanders • Amateur Radio
+    </p>
+
 </header>
 
+<!-- ==============================
+     NAVIGATION
+     ============================== -->
+
 <nav>
+
     <a href="/">Home</a>
     <a href="/radio/">Radio</a>
     <a href="/photos/">Photos</a>
     <a href="/personal/">Personal</a>
+
 </nav>
 
-<div class="container">
+<!-- ==============================
+     MAIN CONTENT
+     ============================== -->
+
+<main>
+
+    <!-- EQUIPMENT SECTION -->
 
     <section class="card">
-        <h2>My Radio Station</h2>
 
-        <p>
-            Welcome to the radio section of my website.
-            This is where I'll document my amateur radio equipment,
-            projects, repeaters, and activities.
-        </p>
+        <h2>My Equipment</h2>
 
-        <p>
-            <strong>Callsign:</strong> KJ5QVW
-        </p>
-    </section>
+        <table>
 
-    <section class="radio-grid">
+            <tr>
+                <th>Radio</th>
+                <th>Band</th>
+                <th>Purpose</th>
+            </tr>
 
-        <div class="radio-card">
-            <h2>📡 Equipment</h2>
+            <tr>
+                <td>Yaesu FT-65</td>
+                <td>2m / 70cm</td>
+                <td>Literally everything analog</td>
+            </tr>
 
-            <p>
-                Information about my radios, antennas,
-                and other amateur radio equipment.
-            </p>
-        </div>
+            <tr>
+                <td>AnyTone 779UV + Tram 1180</td>
+                <td>2m / 70cm</td>
+                <td>Mobile repeater and simplex work</td>
+            </tr>
 
-        <div class="radio-card">
-            <h2>📻 Repeaters</h2>
+            <tr>
+                <td>Baofeng GT-5R</td>
+                <td>2m / 70cm</td>
+                <td>Monitoring airband and local VFD dispatch</td>
+            </tr>
 
-            <p>
-                Repeaters I use and information about
-                local amateur radio systems.
-            </p>
-        </div>
-
-        <div class="radio-card">
-            <h2>💻 Digital Radio</h2>
-
-            <p>
-                DMR, Winlink, EchoLink, and other
-                digital radio activities and projects.
-            </p>
-        </div>
-
-        <div class="radio-card">
-            <h2>🔧 Projects</h2>
-
-            <p>
-                Radio projects, experiments, and things
-                I'm currently working on.
-            </p>
-        </div>
+        </table>
 
     </section>
 
-</div>
+
+    <!-- REPEATER SECTION -->
+
+    <section class="card">
+
+        <h2>Favorite Repeaters</h2>
+
+        <table>
+
+            <tr>
+                <th>Repeater</th>
+                <th>Frequency</th>
+                <th>Tone</th>
+                <th>Notes</th>
+            </tr>
+
+            <tr>
+                <td>W5BCS</td>
+                <td>146.680 MHz</td>
+                <td>88.5 Hz</td>
+                <td>
+                    My main repeater for monitoring and ragchewing.
+                    I participate in the Tuesday evening nets as well.
+                </td>
+            </tr>
+
+            <tr>
+                <td>W5AC</td>
+                <td>146.820 MHz</td>
+                <td>88.5 Hz</td>
+                <td>
+                    TAMU repeater. I participate in the Monday evening nets.
+                </td>
+            </tr>
+
+            <tr>
+                <td>WA5AIR</td>
+                <td>443.475 MHz</td>
+                <td>103.5 Hz</td>
+                <td>
+                    South Coast Reflector.
+                </td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- QRZ SECTION -->
+
+    <section class="card qrz-box">
+
+        <h2>QRZ</h2>
+
+        <p>
+            View my amateur radio profile and station information
+            on QRZ.
+        </p>
+
+        <a class="button"
+           href="https://www.qrz.com/db/KJ5QVW"
+           target="_blank"
+           rel="noopener noreferrer">
+            View My QRZ Page
+        </a>
+
+    </section>
+
+</main>
+
+<!-- ==============================
+     FOOTER
+     ============================== -->
 
 <footer>
-    <p>&copy; 2026 Liam Sanders - KJ5QVW. All rights reserved.</p>
+
+    <p>
+        © 2026 Liam Sanders
+    </p>
+
 </footer>
 
 </body>
 </html>
+```
