@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Blog Post - KJ5QVW</title>
+
+<link rel="icon" type="image/png" href="../android-chrome-512x512.png">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #071a33;
+    color: white;
+}
+
+header {
+    background: #0b2a52;
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 3px solid #1e90ff;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 42px;
+}
+
+header p {
+    color: #b9d9ff;
+}
+
+nav {
+    background: #051326;
+    text-align: center;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #4da6ff;
+}
+
+main {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+article {
+    background: #0b2547;
+    border: 1px solid #164b82;
+    border-radius: 12px;
+    padding: 35px;
+}
+
+h2 {
+    color: #4da6ff;
+    margin-top: 0;
+    font-size: 32px;
+}
+
+.date {
+    color: #9bb8d4;
+    margin-bottom: 30px;
+}
+
+.content {
+    color: #d8eaff;
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 25px;
+    background: #1261a0;
+    padding: 10px 16px;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.back:hover {
+    background: #1e90ff;
+}
+
+footer {
+    background: #051326;
+    text-align: center;
+    padding: 25px;
+    color: #9bb8d4;
+    margin-top: 40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>KJ5QVW</h1>
+
+    <p>Liam Sanders</p>
+
+</header>
+
+<nav>
+
+    <a href="/">Home</a>
+    <a href="/radio/">Radio</a>
+    <a href="/photos/">Photos</a>
+    <a href="/personal/">Personal</a>
+    <a href="/blog/">Blog</a>
+
+</nav>
+
+<main>
+
+<article id="post">
+
+    Loading...
+
+</article>
+
+</main>
+
+<footer>
+
+    <p>© 2026 Liam Sanders</p>
+
+</footer>
+
+<script>
+
+async function loadPost() {
+
+    const id =
+        new URLSearchParams(window.location.search).get("id");
+
+    const container =
+        document.getElementById("post");
+
+    if (!id) {
+
+        container.innerHTML =
+            "<h2>Post not found</h2>";
+
+        return;
+
+    }
+
+    try {
+
+        const response =
+            await fetch("/api/post?id=" + encodeURIComponent(id));
+
+        if (!response.ok) {
+            throw new Error();
+        }
+
+        const post = await response.json();
+
+        document.title =
+            post.title + " - KJ5QVW";
+
+        const date =
+            new Date(post.created_at)
+            .toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            });
+
+        container.innerHTML = `
+
+            <h2>${escapeHTML(post.title)}</h2>
+
+            <div class="date">
+                ${date}
+            </div>
+
+            <div class="content">
+                ${escapeHTML(post.content)}
+            </div>
+
+            <a class="back" href="/blog/">
+                ← Back to Blog
+            </a>
+
+        `;
+
+    } catch {
+
+        container.innerHTML = `
+            <h2>Post not found</h2>
+            <a class="back" href="/blog/">
+                ← Back to Blog
+            </a>
+        `;
+
+    }
+
+}
+
+function escapeHTML(text) {
+
+    const div = document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+loadPost();
+
+</script>
+
+</body>
+</html>
