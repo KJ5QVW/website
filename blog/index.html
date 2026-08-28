@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Blog - KJ5QVW</title>
+
+<link rel="icon" type="image/png" href="../android-chrome-512x512.png">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #071a33;
+    color: white;
+}
+
+header {
+    background: #0b2a52;
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 3px solid #1e90ff;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 42px;
+}
+
+header p {
+    margin: 8px 0 0;
+    font-size: 18px;
+    color: #b9d9ff;
+}
+
+nav {
+    background: #051326;
+    text-align: center;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #4da6ff;
+}
+
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+.page-title {
+    background: #0b2547;
+    border: 1px solid #164b82;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.page-title h2 {
+    margin-top: 0;
+    color: #4da6ff;
+}
+
+.page-title p {
+    color: #b9d9ff;
+}
+
+.post {
+    background: #0b2547;
+    border: 1px solid #164b82;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.post h2 {
+    margin-top: 0;
+    color: #4da6ff;
+}
+
+.post-date {
+    color: #9bb8d4;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.post-excerpt {
+    color: #b9d9ff;
+    line-height: 1.6;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 16px;
+    background: #1261a0;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.read-more:hover {
+    background: #1e90ff;
+}
+
+.empty {
+    text-align: center;
+    color: #9bb8d4;
+    padding: 40px;
+}
+
+footer {
+    background: #051326;
+    text-align: center;
+    padding: 25px;
+    color: #9bb8d4;
+    margin-top: 40px;
+}
+
+@media (max-width: 700px) {
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px;
+    }
+
+    main {
+        padding: 20px 12px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>KJ5QVW</h1>
+</header>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/radio/">Radio</a>
+    <a href="/photos/">Photos</a>
+    <a href="/personal/">Personal</a>
+    <a href="/blog/">Blog</a>
+</nav>
+
+<main>
+
+<section class="page-title">
+
+    <h2>Blog</h2>
+
+    <p>
+        Posts, projects, and other things I'm working on.
+    </p>
+
+</section>
+
+<div id="posts">
+
+    <div class="empty">
+        Loading posts...
+    </div>
+
+</div>
+
+</main>
+
+<footer>
+    <p>© 2026 Liam Sanders</p>
+</footer>
+
+<script>
+
+async function loadPosts() {
+
+    const container = document.getElementById("posts");
+
+    try {
+
+        const response = await fetch("/api/posts");
+
+        if (!response.ok) {
+            throw new Error("Unable to load posts.");
+        }
+
+        const posts = await response.json();
+
+        if (!posts.length) {
+
+            container.innerHTML = `
+                <div class="empty">
+                    No blog posts yet.
+                </div>
+            `;
+
+            return;
+        }
+
+        container.innerHTML = posts.map(post => {
+
+            const date = new Date(post.created_at)
+                .toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                });
+
+            return `
+                <article class="post">
+
+                    <h2>${escapeHTML(post.title)}</h2>
+
+                    <div class="post-date">
+                        ${date}
+                    </div>
+
+                    <div class="post-excerpt">
+                        ${escapeHTML(post.excerpt || "")}
+                    </div>
+
+                    <a
+                        class="read-more"
+                        href="/blog/post.html?id=${post.id}"
+                    >
+                        Read More
+                    </a>
+
+                </article>
+            `;
+
+        }).join("");
+
+    } catch (error) {
+
+        container.innerHTML = `
+            <div class="empty">
+                Unable to load blog posts.
+            </div>
+        `;
+
+    }
+
+}
+
+function escapeHTML(text) {
+
+    const div = document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+loadPosts();
+
+</script>
+
+</body>
+</html>
