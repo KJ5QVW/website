@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Blog Admin - KJ5QVW</title>
+
+<link rel="icon" type="image/png" href="../../android-chrome-512x512.png">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #071a33;
+    color: white;
+}
+
+header {
+    background: #0b2a52;
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 3px solid #1e90ff;
+}
+
+header h1 {
+    margin: 0;
+}
+
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+.card {
+    background: #0b2547;
+    border: 1px solid #164b82;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #4da6ff;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 18px;
+    background: #051326;
+    border: 1px solid #164b82;
+    border-radius: 6px;
+    color: white;
+    font-family: inherit;
+}
+
+textarea {
+    min-height: 300px;
+    resize: vertical;
+}
+
+button {
+    background: #1261a0;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    padding: 11px 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+button:hover {
+    background: #1e90ff;
+}
+
+.delete {
+    background: #8b2635;
+}
+
+.delete:hover {
+    background: #b83246;
+}
+
+.post {
+    border-top: 1px solid #164b82;
+    padding: 20px 0;
+}
+
+.post:first-child {
+    border-top: none;
+}
+
+.post h3 {
+    margin-bottom: 5px;
+}
+
+.date {
+    color: #9bb8d4;
+    font-size: 14px;
+}
+
+#dashboard {
+    display: none;
+}
+
+#message {
+    margin-bottom: 15px;
+    color: #b9d9ff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>KJ5QVW Blog Admin</h1>
+
+</header>
+
+<main>
+
+<div id="login" class="card">
+
+<h2>Admin Login</h2>
+
+<form id="loginForm">
+
+<label>Password</label>
+
+<input
+    type="password"
+    id="password"
+    required
+>
+
+<button type="submit">
+    Login
+</button>
+
+</form>
+
+</div>
+
+<div id="dashboard">
+
+<div class="card">
+
+<h2>Create Blog Post</h2>
+
+<div id="message"></div>
+
+<form id="postForm">
+
+<label>Title</label>
+
+<input
+    type="text"
+    id="title"
+    required
+>
+
+<label>Excerpt</label>
+
+<input
+    type="text"
+    id="excerpt"
+    placeholder="Short description shown on the blog page"
+>
+
+<label>Content</label>
+
+<textarea
+    id="content"
+    required
+></textarea>
+
+<button type="submit">
+    Publish
+</button>
+
+</form>
+
+</div>
+
+<div class="card">
+
+<h2>Existing Posts</h2>
+
+<div id="posts">
+    Loading...
+</div>
+
+<button onclick="logout()">
+    Log Out
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<script>
+
+async function checkLogin() {
+
+    const response =
+        await fetch("/api/admin/posts");
+
+    if (response.ok) {
+
+        document.getElementById("login")
+            .style.display = "none";
+
+        document.getElementById("dashboard")
+            .style.display = "block";
+
+        loadPosts();
+
+    }
+
+}
+
+document
+.getElementById("loginForm")
+.addEventListener("submit", async event => {
+
+    event.preventDefault();
+
+    const password =
+        document.getElementById("password").value;
+
+    const response =
+        await fetch("/api/admin/login", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                password
+            })
+
+        });
+
+    if (response.ok) {
+
+        document.getElementById("login")
+            .style.display = "none";
+
+        document.getElementById("dashboard")
+            .style.display = "block";
+
+        loadPosts();
+
+    } else {
+
+        alert("Incorrect password.");
+
+    }
+
+});
+
+document
+.getElementById("postForm")
+.addEventListener("submit", async event => {
+
+    event.preventDefault();
+
+    const title =
+        document.getElementById("title").value;
+
+    const excerpt =
+        document.getElementById("excerpt").value;
+
+    const content =
+        document.getElementById("content").value;
+
+    const response =
+        await fetch("/api/admin/posts", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                title,
+                excerpt,
+                content
+            })
+
+        });
+
+    if (response.ok) {
+
+        document.getElementById("postForm").reset();
+
+        document.getElementById("message")
+            .textContent = "Post published.";
+
+        loadPosts();
+
+    } else {
+
+        document.getElementById("message")
+            .textContent = "Unable to publish post.";
+
+    }
+
+});
+
+async function loadPosts() {
+
+    const response =
+        await fetch("/api/admin/posts");
+
+    if (!response.ok) {
+        return;
+    }
+
+    const posts =
+        await response.json();
+
+    const container =
+        document.getElementById("posts");
+
+    if (!posts.length) {
+
+        container.innerHTML =
+            "<p>No posts yet.</p>";
+
+        return;
+
+    }
+
+    container.innerHTML =
+        posts.map(post => `
+
+            <div class="post">
+
+                <h3>
+                    ${escapeHTML(post.title)}
+                </h3>
+
+                <div class="date">
+                    ${new Date(post.created_at)
+                        .toLocaleDateString()}
+                </div>
+
+                <br>
+
+                <button
+                    class="delete"
+                    onclick="deletePost(${post.id})"
+                >
+                    Delete
+                </button>
+
+            </div>
+
+        `).join("");
+
+}
+
+async function deletePost(id) {
+
+    if (!confirm("Delete this post?")) {
+        return;
+    }
+
+    const response =
+        await fetch("/api/admin/posts?id=" + id, {
+            method: "DELETE"
+        });
+
+    if (response.ok) {
+        loadPosts();
+    }
+
+}
+
+async function logout() {
+
+    await fetch("/api/admin/logout", {
+        method: "POST"
+    });
+
+    location.reload();
+
+}
+
+function escapeHTML(text) {
+
+    const div = document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+checkLogin();
+
+</script>
+
+</body>
+</html>
