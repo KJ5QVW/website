@@ -3,123 +3,226 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Blog Admin - KJ5QVW</title>
+    <title>Blog Admin - KJ5QVW</title>
 
-<link rel="icon" type="image/png" href="../../android-chrome-512x512.png">
+    <link rel="icon" type="image/png" href="../../android-chrome-512x512.png">
 
-<style>
+    <style>
 
-* {
-    box-sizing: border-box;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #071a33;
-    color: white;
-}
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #071a33;
+            color: white;
+        }
 
-header {
-    background: #0b2a52;
-    padding: 30px 20px;
-    text-align: center;
-    border-bottom: 3px solid #1e90ff;
-}
+        header {
+            background: #0b2a52;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 3px solid #1e90ff;
+        }
 
-header h1 {
-    margin: 0;
-}
+        header h1 {
+            margin: 0;
+            font-size: 34px;
+        }
 
-main {
-    max-width: 1000px;
-    margin: auto;
-    padding: 30px 20px;
-}
+        header p {
+            margin: 8px 0 0;
+            color: #b9d9ff;
+        }
 
-.card {
-    background: #0b2547;
-    border: 1px solid #164b82;
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 25px;
-}
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px 20px;
+        }
 
-h2 {
-    color: #4da6ff;
-}
+        .card {
+            background: #0b2547;
+            border: 1px solid #164b82;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
 
-input,
-textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0 18px;
-    background: #051326;
-    border: 1px solid #164b82;
-    border-radius: 6px;
-    color: white;
-    font-family: inherit;
-}
+        h2 {
+            margin-top: 0;
+            color: #4da6ff;
+        }
 
-textarea {
-    min-height: 300px;
-    resize: vertical;
-}
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
 
-button {
-    background: #1261a0;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    padding: 11px 18px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-right: 8px;
-}
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 0 0 18px;
+            background: #051326;
+            border: 1px solid #164b82;
+            border-radius: 6px;
+            color: white;
+            font-family: inherit;
+            font-size: 15px;
+        }
 
-button:hover {
-    background: #1e90ff;
-}
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #1e90ff;
+        }
 
-.delete {
-    background: #8b2635;
-}
+        textarea {
+            min-height: 300px;
+            resize: vertical;
+        }
 
-.delete:hover {
-    background: #b83246;
-}
+        button {
+            background: #1261a0;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            padding: 11px 18px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
 
-.post {
-    border-top: 1px solid #164b82;
-    padding: 20px 0;
-}
+        button:hover {
+            background: #1e90ff;
+        }
 
-.post:first-child {
-    border-top: none;
-}
+        .delete {
+            background: #8b2635;
+        }
 
-.post h3 {
-    margin-bottom: 5px;
-}
+        .delete:hover {
+            background: #b83246;
+        }
 
-.date {
-    color: #9bb8d4;
-    font-size: 14px;
-}
+        .logout {
+            background: #555;
+        }
 
-#dashboard {
-    display: none;
-}
+        .logout:hover {
+            background: #777;
+        }
 
-#message {
-    margin-bottom: 15px;
-    color: #b9d9ff;
-}
+        .post {
+            border-top: 1px solid #164b82;
+            padding: 20px 0;
+        }
 
-</style>
+        .post:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .post h3 {
+            margin: 0 0 6px;
+            color: #4da6ff;
+            font-size: 21px;
+        }
+
+        .date {
+            color: #9bb8d4;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .excerpt {
+            color: #b9d9ff;
+            margin-bottom: 15px;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        #dashboard {
+            display: none;
+        }
+
+        #message {
+            margin-bottom: 15px;
+            color: #b9d9ff;
+        }
+
+        .error {
+            color: #ff9b9b !important;
+        }
+
+        .success {
+            color: #8ff0a4 !important;
+        }
+
+        .empty {
+            color: #9bb8d4;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .admin-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .admin-links a {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #1261a0;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .admin-links a:hover {
+            background: #1e90ff;
+        }
+
+        footer {
+            background: #051326;
+            text-align: center;
+            padding: 25px;
+            color: #9bb8d4;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+
+            main {
+                padding: 20px 12px;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -127,299 +230,628 @@ button:hover {
 
 <header>
 
-<h1>KJ5QVW Blog Admin</h1>
+    <h1>KJ5QVW Blog Admin</h1>
+
+    <p>Liam Sanders</p>
 
 </header>
 
 <main>
 
-<div id="login" class="card">
+    <!-- LOGIN -->
 
-<h2>Admin Login</h2>
+    <div id="login" class="card">
 
-<form id="loginForm">
+        <h2>Admin Login</h2>
 
-<label>Password</label>
+        <p>
+            Enter the administrator password to manage the blog.
+        </p>
 
-<input
-    type="password"
-    id="password"
-    required
->
+        <form id="loginForm">
 
-<button type="submit">
-    Login
-</button>
+            <label for="password">
+                Password
+            </label>
 
-</form>
+            <input
+                type="password"
+                id="password"
+                autocomplete="current-password"
+                required
+            >
 
-</div>
+            <button type="submit">
+                Login
+            </button>
 
-<div id="dashboard">
+        </form>
 
-<div class="card">
+    </div>
 
-<h2>Create Blog Post</h2>
 
-<div id="message"></div>
+    <!-- DASHBOARD -->
 
-<form id="postForm">
+    <div id="dashboard">
 
-<label>Title</label>
+        <!-- CREATE POST -->
 
-<input
-    type="text"
-    id="title"
-    required
->
+        <div class="card">
 
-<label>Excerpt</label>
+            <h2>Create Blog Post</h2>
 
-<input
-    type="text"
-    id="excerpt"
-    placeholder="Short description shown on the blog page"
->
+            <div id="message"></div>
 
-<label>Content</label>
+            <form id="postForm">
 
-<textarea
-    id="content"
-    required
-></textarea>
+                <label for="title">
+                    Title
+                </label>
 
-<button type="submit">
-    Publish
-</button>
+                <input
+                    type="text"
+                    id="title"
+                    maxlength="200"
+                    required
+                >
 
-</form>
+                <label for="excerpt">
+                    Excerpt
+                </label>
 
-</div>
+                <input
+                    type="text"
+                    id="excerpt"
+                    maxlength="500"
+                    placeholder="Short description shown on the blog page"
+                >
 
-<div class="card">
+                <label for="content">
+                    Content
+                </label>
 
-<h2>Existing Posts</h2>
+                <textarea
+                    id="content"
+                    required
+                    placeholder="Write your blog post here..."
+                ></textarea>
 
-<div id="posts">
-    Loading...
-</div>
+                <button type="submit">
+                    Publish Post
+                </button>
 
-<button onclick="logout()">
-    Log Out
-</button>
+            </form>
 
-</div>
+        </div>
 
-</div>
 
-</main>
+        <!-- EXISTING POSTS -->
 
-<script>
+        <div class="card">
 
-async function checkLogin() {
+            <h2>Existing Posts</h2>
 
-    const response =
-        await fetch("/api/admin/posts");
+            <div id="posts">
 
-    if (response.ok) {
-
-        document.getElementById("login")
-            .style.display = "none";
-
-        document.getElementById("dashboard")
-            .style.display = "block";
-
-        loadPosts();
-
-    }
-
-}
-
-document
-.getElementById("loginForm")
-.addEventListener("submit", async event => {
-
-    event.preventDefault();
-
-    const password =
-        document.getElementById("password").value;
-
-    const response =
-        await fetch("/api/admin/login", {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                password
-            })
-
-        });
-
-    if (response.ok) {
-
-        document.getElementById("login")
-            .style.display = "none";
-
-        document.getElementById("dashboard")
-            .style.display = "block";
-
-        loadPosts();
-
-    } else {
-
-        alert("Incorrect password.");
-
-    }
-
-});
-
-document
-.getElementById("postForm")
-.addEventListener("submit", async event => {
-
-    event.preventDefault();
-
-    const title =
-        document.getElementById("title").value;
-
-    const excerpt =
-        document.getElementById("excerpt").value;
-
-    const content =
-        document.getElementById("content").value;
-
-    const response =
-        await fetch("/api/admin/posts", {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                title,
-                excerpt,
-                content
-            })
-
-        });
-
-    if (response.ok) {
-
-        document.getElementById("postForm").reset();
-
-        document.getElementById("message")
-            .textContent = "Post published.";
-
-        loadPosts();
-
-    } else {
-
-        document.getElementById("message")
-            .textContent = "Unable to publish post.";
-
-    }
-
-});
-
-async function loadPosts() {
-
-    const response =
-        await fetch("/api/admin/posts");
-
-    if (!response.ok) {
-        return;
-    }
-
-    const posts =
-        await response.json();
-
-    const container =
-        document.getElementById("posts");
-
-    if (!posts.length) {
-
-        container.innerHTML =
-            "<p>No posts yet.</p>";
-
-        return;
-
-    }
-
-    container.innerHTML =
-        posts.map(post => `
-
-            <div class="post">
-
-                <h3>
-                    ${escapeHTML(post.title)}
-                </h3>
-
-                <div class="date">
-                    ${new Date(post.created_at)
-                        .toLocaleDateString()}
+                <div class="empty">
+                    Loading posts...
                 </div>
 
-                <br>
+            </div>
+
+            <div class="admin-links">
+
+                <a href="/blog/" target="_blank">
+                    View Blog
+                </a>
 
                 <button
-                    class="delete"
-                    onclick="deletePost(${post.id})"
+                    class="logout"
+                    onclick="logout()"
                 >
-                    Delete
+                    Log Out
                 </button>
 
             </div>
 
-        `).join("");
+        </div>
 
-}
+    </div>
 
-async function deletePost(id) {
+</main>
 
-    if (!confirm("Delete this post?")) {
-        return;
+<footer>
+
+    <p>
+        © 2026 Liam Sanders
+    </p>
+
+</footer>
+
+
+<script>
+
+    /*
+     * ============================
+     * CHECK LOGIN
+     * ============================
+     */
+
+    async function checkLogin() {
+
+        try {
+
+            const response =
+                await fetch("/api/admin/posts");
+
+            if (response.ok) {
+
+                showDashboard();
+
+            }
+
+        } catch (error) {
+
+            console.error(error);
+
+        }
+
     }
 
-    const response =
-        await fetch("/api/admin/posts?id=" + id, {
-            method: "DELETE"
+
+    /*
+     * ============================
+     * SHOW DASHBOARD
+     * ============================
+     */
+
+    function showDashboard() {
+
+        document.getElementById("login")
+            .style.display = "none";
+
+        document.getElementById("dashboard")
+            .style.display = "block";
+
+        loadPosts();
+
+    }
+
+
+    /*
+     * ============================
+     * LOGIN
+     * ============================
+     */
+
+    document
+        .getElementById("loginForm")
+        .addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const password =
+                document.getElementById("password").value;
+
+            try {
+
+                const response =
+                    await fetch("/api/admin/login", {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            password: password
+                        })
+
+                    });
+
+                if (response.ok) {
+
+                    document.getElementById("password")
+                        .value = "";
+
+                    showDashboard();
+
+                } else {
+
+                    const data =
+                        await response.json()
+                        .catch(() => ({}));
+
+                    alert(
+                        data.error ||
+                        "Incorrect password."
+                    );
+
+                }
+
+            } catch (error) {
+
+                alert(
+                    "Unable to connect to the server."
+                );
+
+            }
+
         });
 
-    if (response.ok) {
-        loadPosts();
+
+    /*
+     * ============================
+     * CREATE POST
+     * ============================
+     */
+
+    document
+        .getElementById("postForm")
+        .addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const title =
+                document.getElementById("title")
+                    .value
+                    .trim();
+
+            const excerpt =
+                document.getElementById("excerpt")
+                    .value
+                    .trim();
+
+            const content =
+                document.getElementById("content")
+                    .value
+                    .trim();
+
+            const message =
+                document.getElementById("message");
+
+            if (!title || !content) {
+
+                message.textContent =
+                    "Title and content are required.";
+
+                message.className = "error";
+
+                return;
+
+            }
+
+            try {
+
+                const response =
+                    await fetch("/api/admin/posts", {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            title: title,
+                            excerpt: excerpt,
+                            content: content
+
+                        })
+
+                    });
+
+                if (response.ok) {
+
+                    document
+                        .getElementById("postForm")
+                        .reset();
+
+                    message.textContent =
+                        "Post published successfully.";
+
+                    message.className = "success";
+
+                    loadPosts();
+
+                } else if (response.status === 401) {
+
+                    alert(
+                        "Your admin session has expired. Please log in again."
+                    );
+
+                    location.reload();
+
+                } else {
+
+                    const data =
+                        await response.json()
+                        .catch(() => ({}));
+
+                    message.textContent =
+                        data.error ||
+                        "Unable to publish post.";
+
+                    message.className = "error";
+
+                }
+
+            } catch (error) {
+
+                message.textContent =
+                    "Unable to connect to the server.";
+
+                message.className = "error";
+
+            }
+
+        });
+
+
+    /*
+     * ============================
+     * LOAD POSTS
+     * ============================
+     */
+
+    async function loadPosts() {
+
+        const container =
+            document.getElementById("posts");
+
+        container.innerHTML =
+            '<div class="empty">Loading posts...</div>';
+
+        try {
+
+            const response =
+                await fetch("/api/admin/posts");
+
+            if (response.status === 401) {
+
+                document.getElementById("login")
+                    .style.display = "block";
+
+                document.getElementById("dashboard")
+                    .style.display = "none";
+
+                return;
+
+            }
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Unable to load posts."
+                );
+
+            }
+
+            const posts =
+                await response.json();
+
+            if (!posts.length) {
+
+                container.innerHTML = `
+                    <div class="empty">
+                        No blog posts yet.
+                    </div>
+                `;
+
+                return;
+
+            }
+
+            container.innerHTML =
+                posts.map(post => {
+
+                    const date =
+                        new Date(post.created_at)
+                            .toLocaleDateString(
+                                "en-US",
+                                {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric"
+                                }
+                            );
+
+                    return `
+
+                        <div class="post">
+
+                            <h3>
+                                ${escapeHTML(post.title)}
+                            </h3>
+
+                            <div class="date">
+                                ${date}
+                            </div>
+
+                            ${
+                                post.excerpt
+                                ? `
+                                    <div class="excerpt">
+                                        ${escapeHTML(post.excerpt)}
+                                    </div>
+                                  `
+                                : ""
+                            }
+
+                            <div class="post-actions">
+
+                                <a
+                                    href="/blog/post.html?id=${encodeURIComponent(post.id)}"
+                                    target="_blank"
+                                    style="
+                                        display:inline-block;
+                                        padding:11px 18px;
+                                        background:#1261a0;
+                                        color:white;
+                                        text-decoration:none;
+                                        border-radius:6px;
+                                        font-weight:bold;
+                                        font-size:14px;
+                                    "
+                                >
+                                    View
+                                </a>
+
+                                <button
+                                    class="delete"
+                                    onclick="deletePost(
+                                        ${post.id},
+                                        ${JSON.stringify(post.title)}
+                                    )"
+                                >
+                                    Delete
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }).join("");
+
+        } catch (error) {
+
+            console.error(error);
+
+            container.innerHTML = `
+                <div class="empty">
+                    Unable to load posts.
+                </div>
+            `;
+
+        }
+
     }
 
-}
 
-async function logout() {
+    /*
+     * ============================
+     * DELETE POST
+     * ============================
+     */
 
-    await fetch("/api/admin/logout", {
-        method: "POST"
-    });
+    async function deletePost(id, title) {
 
-    location.reload();
+        const confirmed =
+            confirm(
+                `Are you sure you want to delete "${title}"?\n\n` +
+                `This cannot be undone.`
+            );
 
-}
+        if (!confirmed) {
+            return;
+        }
 
-function escapeHTML(text) {
+        try {
 
-    const div = document.createElement("div");
+            const response =
+                await fetch(
+                    "/api/admin/posts?id=" +
+                    encodeURIComponent(id),
+                    {
+                        method: "DELETE"
+                    }
+                );
 
-    div.textContent = text;
+            if (response.ok) {
 
-    return div.innerHTML;
+                loadPosts();
 
-}
+            } else if (response.status === 401) {
 
-checkLogin();
+                alert(
+                    "Your admin session has expired. Please log in again."
+                );
+
+                location.reload();
+
+            } else {
+
+                const data =
+                    await response.json()
+                    .catch(() => ({}));
+
+                alert(
+                    data.error ||
+                    "Unable to delete the post."
+                );
+
+            }
+
+        } catch (error) {
+
+            alert(
+                "Unable to connect to the server."
+            );
+
+        }
+
+    }
+
+
+    /*
+     * ============================
+     * LOG OUT
+     * ============================
+     */
+
+    async function logout() {
+
+        try {
+
+            await fetch(
+                "/api/admin/logout",
+                {
+                    method: "POST"
+                }
+            );
+
+        } finally {
+
+            location.reload();
+
+        }
+
+    }
+
+
+    /*
+     * ============================
+     * HTML ESCAPING
+     * ============================
+     */
+
+    function escapeHTML(text) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent =
+            text ?? "";
+
+        return div.innerHTML;
+
+    }
+
+
+    /*
+     * ============================
+     * START
+     * ============================
+     */
+
+    checkLogin();
 
 </script>
 
 </body>
+
 </html>
