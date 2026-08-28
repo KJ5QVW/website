@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Radio - KJ5QVW</title>
+
+    <link rel="icon" type="image/png" href="../android-chrome-512x512.png">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #071a33;
+            color: #222;
+        }
+
+        header {
+            background-color: #0b2a52;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+            border-bottom: 4px solid #1e90ff;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.4rem;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            font-size: 1.1rem;
+        }
+
+        nav {
+            background-color: #06152a;
+            text-align: center;
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #1e90ff;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 25px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        }
+
+        h2 {
+            color: #0b2a52;
+            margin-top: 0;
+        }
+
+        .radio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .radio-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        }
+
+        .radio-card p {
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #06152a;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .radio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 6px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>📻 Radio</h1>
+    <p>KJ5QVW Amateur Radio</p>
+</header>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/radio/">Radio</a>
+    <a href="/photos/">Photos</a>
+    <a href="/personal/">Personal</a>
+</nav>
+
+<div class="container">
+
+    <section class="card">
+        <h2>My Radio Station</h2>
+
+        <p>
+            Welcome to the radio section of my website.
+            This is where I'll document my amateur radio equipment,
+            projects, repeaters, and activities.
+        </p>
+
+        <p>
+            <strong>Callsign:</strong> KJ5QVW
+        </p>
+    </section>
+
+    <section class="radio-grid">
+
+        <div class="radio-card">
+            <h2>📡 Equipment</h2>
+
+            <p>
+                Information about my radios, antennas,
+                and other amateur radio equipment.
+            </p>
+        </div>
+
+        <div class="radio-card">
+            <h2>📻 Repeaters</h2>
+
+            <p>
+                Repeaters I use and information about
+                local amateur radio systems.
+            </p>
+        </div>
+
+        <div class="radio-card">
+            <h2>💻 Digital Radio</h2>
+
+            <p>
+                DMR, Winlink, EchoLink, and other
+                digital radio activities and projects.
+            </p>
+        </div>
+
+        <div class="radio-card">
+            <h2>🔧 Projects</h2>
+
+            <p>
+                Radio projects, experiments, and things
+                I'm currently working on.
+            </p>
+        </div>
+
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Liam Sanders - KJ5QVW. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
