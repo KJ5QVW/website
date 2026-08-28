@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 
 <html lang="en">
@@ -74,22 +75,31 @@
             padding: 30px 20px;
         }
 
-        .card {
+        /* ==============================
+           WELCOME CARD
+           ============================== */
+
+        .welcome {
             background: #0b2547;
             border: 1px solid #164b82;
             border-radius: 12px;
-            padding: 25px;
+            padding: 30px;
             margin-bottom: 25px;
+            text-align: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .card h2 {
+        .welcome h2 {
             color: #4da6ff;
             margin-top: 0;
         }
 
+        .welcome p {
+            color: #b9d9ff;
+        }
+
         /* ==============================
-           SHORTCUT LINKS
+           SECTION SHORTCUTS
            ============================== */
 
         .shortcuts {
@@ -140,32 +150,6 @@
         }
 
         /* ==============================
-           QRZ BOX
-           ============================== */
-
-        .qrz-box {
-            text-align: center;
-        }
-
-        .qrz-box p {
-            color: #b9d9ff;
-        }
-
-        .button {
-            display: inline-block;
-            background: #1261a0;
-            color: white;
-            text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 6px;
-            margin-top: 10px;
-        }
-
-        .button:hover {
-            background: #1e90ff;
-        }
-
-        /* ==============================
            FOOTER
            ============================== */
 
@@ -204,3 +188,123 @@
 
 </head>
 
+<body>
+
+<!-- ==============================
+     HEADER
+     ============================== -->
+
+<header>
+
+    <h1>KJ5QVW</h1>
+
+    <p>
+        Liam Sanders
+    </p>
+
+</header>
+
+
+<!-- ==============================
+     NAVIGATION
+     ============================== -->
+
+<nav>
+
+    <a href="/">Home</a>
+    <a href="/radio/">Radio</a>
+    <a href="/photos/">Photos</a>
+    <a href="/personal/">Personal</a>
+
+</nav>
+
+
+<!-- ==============================
+     MAIN CONTENT
+     ============================== -->
+
+<main>
+
+    <!-- WELCOME -->
+
+    <section class="welcome">
+
+        <h2>Home</h2>
+
+        <p>
+            Howdy! Welcome to my website.
+        </p>
+
+    </section>
+
+
+    <!-- SECTION SHORTCUTS -->
+
+    <section class="shortcuts">
+
+        <a class="shortcut" href="/radio/">
+
+            <h2>Radio</h2>
+
+            <p>
+                My amateur radio equipment,
+                favorite repeaters, and QRZ profile.
+            </p>
+
+            <span class="shortcut-button">
+                Go to Radio
+            </span>
+
+        </a>
+
+
+        <a class="shortcut" href="/photos/">
+
+            <h2>Photos</h2>
+
+            <p>
+                My photo portfolio.
+            </p>
+
+            <span class="shortcut-button">
+                View Photos
+            </span>
+
+        </a>
+
+
+        <a class="shortcut" href="/personal/">
+
+            <h2>Personal</h2>
+
+            <p>
+                Personal interests, hobbies,
+                projects, and other information.
+            </p>
+
+            <span class="shortcut-button">
+                Personal
+            </span>
+
+        </a>
+
+    </section>
+
+</main>
+
+
+<!-- ==============================
+     FOOTER
+     ============================== -->
+
+<footer>
+
+    <p>
+        © 2026 Liam Sanders
+    </p>
+
+</footer>
+
+</body>
+</html>
+```
