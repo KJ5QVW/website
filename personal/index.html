@@ -6,40 +6,48 @@
 
     <title>Personal - Liam Sanders</title>
 
-    <link rel="icon" type="image/png" href="../android-chrome-512x512.png">
+    <link rel="icon" type="image/png" href="../android-chrome-512x5x12.png">
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        /* ==============================
+           MAIN WEBSITE COLORS
+           ============================== */
 
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #071a33;
-            color: #222;
+            background: #071a33;
+            color: #ffffff;
         }
 
+        /* ==============================
+           HEADER
+           ============================== */
+
         header {
-            background-color: #0b2a52;
-            color: white;
+            background: #0b2a52;
+            padding: 30px 20px;
             text-align: center;
-            padding: 35px 20px;
-            border-bottom: 4px solid #1e90ff;
+            border-bottom: 3px solid #1e90ff;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.4rem;
+            font-size: 42px;
         }
 
         header p {
             margin: 8px 0 0;
-            font-size: 1.1rem;
+            font-size: 18px;
+            color: #b9d9ff;
         }
 
+        /* ==============================
+           NAVIGATION BAR
+           ============================== */
+
         nav {
-            background-color: #06152a;
+            background: #051326;
             text-align: center;
             padding: 15px;
         }
@@ -47,66 +55,115 @@
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 18px;
+            margin: 0 15px;
             font-weight: bold;
         }
 
         nav a:hover {
-            color: #1e90ff;
+            color: #4da6ff;
         }
+
+        /* ==============================
+           MAIN CONTENT
+           ============================== */
 
         .container {
-            max-width: 1100px;
-            margin: 35px auto;
-            padding: 0 25px;
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 20px;
         }
 
-        .card {
-            background-color: white;
+        .card,
+        .personal-card {
+            background: #0b2547;
+            border: 1px solid #164b82;
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px;
             margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         h2 {
-            color: #0b2a52;
+            color: #4da6ff;
             margin-top: 0;
         }
+
+        .card p,
+        .personal-card p {
+            line-height: 1.6;
+            color: #ffffff;
+        }
+
+        /* ==============================
+           PERSONAL GRID
+           ============================== */
 
         .personal-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 25px;
         }
 
-        .personal-card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        .personal-grid .personal-card {
+            margin-bottom: 0;
         }
 
-        .personal-card p {
-            line-height: 1.6;
+        /* ==============================
+           LINKS
+           ============================== */
+
+        .button {
+            display: inline-block;
+            background: #1261a0;
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            margin-top: 10px;
         }
+
+        .button:hover {
+            background: #1e90ff;
+        }
+
+        /* ==============================
+           FOOTER
+           ============================== */
 
         footer {
-            background-color: #06152a;
-            color: white;
+            background: #051326;
             text-align: center;
             padding: 25px;
+            color: #9bb8d4;
             margin-top: 40px;
         }
 
+        /* ==============================
+           MOBILE PHONE DISPLAY
+           ============================== */
+
         @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 30px;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px;
+            }
+
+            .container {
+                padding: 20px 12px;
+            }
+
             .personal-grid {
                 grid-template-columns: 1fr;
             }
 
-            nav a {
-                display: inline-block;
-                margin: 6px 10px;
+            .button {
+                display: block;
+                text-align: center;
             }
         }
     </style>
@@ -114,9 +171,17 @@
 
 <body>
 
+<!-- ==============================
+     HEADER
+     ============================== -->
+
 <header>
     <h1>Personal</h1>
 </header>
+
+<!-- ==============================
+     NAVIGATION
+     ============================== -->
 
 <nav>
     <a href="/">Home</a>
@@ -125,76 +190,104 @@
     <a href="/personal/">Personal</a>
 </nav>
 
+<!-- ==============================
+     MAIN CONTENT
+     ============================== -->
+
 <div class="container">
 
+    <!-- ABOUT ME -->
+
     <section class="card">
+
         <h2>About Me</h2>
 
         <p>
-             Hi! I'm Liam Sanders, and my ham radio callsign is KJ5QVW.
-
-I am a high school student in College Station, TX, and I have been interested in amateur radio since I was 13 years old.  
+            Hi! I'm Liam Sanders, and my ham radio callsign is KJ5QVW.
         </p>
+
+        <p>
+            I am a high school student in College Station, TX, and I have been
+            interested in amateur radio since I was 13 years old.
+        </p>
+
     </section>
+
+    <!-- PERSONAL INFORMATION -->
 
     <section class="personal-grid">
 
         <div class="personal-card">
+
             <h2>Interests</h2>
 
             <p>
-                My hobbies outside of radio include patch collecting, airsoft, photography, reading, listening to all kinds of music, and volunteering in the sound booth at my church. I run track and field as a sport.
+                My hobbies outside of radio include patch collecting, airsoft,
+                photography, reading, listening to all kinds of music, and
+                volunteering in the sound booth at my church. I run track and
+                field as a sport.
             </p>
+
         </div>
 
         <div class="personal-card">
+
             <h2>Projects</h2>
 
             <p>
                 Nothing as of right now!
             </p>
+
         </div>
 
         <div class="personal-card">
+
             <h2>Goals</h2>
 
             <p>
-               Become a 911 dispatcher after high school before transfering to the police department. Law enforcement has been a career goal of mine for a very long time. 
+                Become a 911 dispatcher after high school before transferring
+                to the police department. Law enforcement has been a career
+                goal of mine for a very long time.
             </p>
+
         </div>
-        
-<div class="personal-card">
-    <h2>Links</h2>
 
-    <p>
-        Find me around the web:
-    </p>
+        <div class="personal-card">
 
-    <a class="button"
-       href="https://www.youtube.com/@bcscodecatcher"
-       target="_blank"
-       rel="noopener noreferrer">
-        YouTube
-    </a>
+            <h2>Links</h2>
 
-    <br>
+            <p>
+                Find me around the web:
+            </p>
 
-    <a class="button"
-       href="https://substack.com/@l1amsand3rs"
-       target="_blank"
-       rel="noopener noreferrer">
-        Substack
-    </a>
-</div>
-```
+            <a class="button"
+               href="https://www.youtube.com/@bcscodecatcher"
+               target="_blank"
+               rel="noopener noreferrer">
+                YouTube
+            </a>
 
+            <br>
+
+            <a class="button"
+               href="https://substack.com/@l1amsand3rs"
+               target="_blank"
+               rel="noopener noreferrer">
+                Substack
+            </a>
+
+        </div>
 
     </section>
 
 </div>
 
+<!-- ==============================
+     FOOTER
+     ============================== -->
+
 <footer>
-    <p>&copy; 2026 Liam Sanders.</p>
+    <p>&copy; 2026 Liam Sanders</p>
 </footer>
 
 </body>
