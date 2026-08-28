@@ -1,45 +1,54 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Photos - KJ5QVW</title>
+    <title>Photos - Liam Sanders - KJ5QVW</title>
 
-    <link rel="icon" type="image/png" href="../android-chrome-512x512.png">
+    <link rel="icon" type="image/png" href="../android-chrome-512x5x12.png">
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        /* ==============================
+           MAIN WEBSITE COLORS
+           ============================== */
 
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #071a33;
-            color: #222;
+            background: #071a33;
+            color: #ffffff;
         }
 
+        /* ==============================
+           HEADER
+           ============================== */
+
         header {
-            background-color: #0b2a52;
-            color: white;
+            background: #0b2a52;
+            padding: 30px 20px;
             text-align: center;
-            padding: 35px 20px;
-            border-bottom: 4px solid #1e90ff;
+            border-bottom: 3px solid #1e90ff;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.4rem;
+            font-size: 42px;
         }
 
         header p {
             margin: 8px 0 0;
-            font-size: 1.1rem;
+            font-size: 18px;
+            color: #b9d9ff;
         }
 
+        /* ==============================
+           NAVIGATION BAR
+           ============================== */
+
         nav {
-            background-color: #06152a;
+            background: #051326;
             text-align: center;
             padding: 15px;
         }
@@ -47,138 +56,184 @@
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 18px;
+            margin: 0 15px;
             font-weight: bold;
         }
 
         nav a:hover {
-            color: #1e90ff;
+            color: #4da6ff;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 35px auto;
-            padding: 0 25px;
+        /* ==============================
+           MAIN CONTENT
+           ============================== */
+
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 20px;
         }
 
         .card {
-            background-color: white;
+            background: #0b2547;
+            border: 1px solid #164b82;
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px;
             margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        h2 {
-            color: #0b2a52;
+        .card h2 {
+            color: #4da6ff;
             margin-top: 0;
         }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        /* ==============================
+           FLICKR EMBED
+           ============================== */
+
+        .flickr-container {
+            width: 100%;
+            height: 750px;
+            overflow: hidden;
+            border-radius: 8px;
         }
 
-        .photo-placeholder {
-            background-color: #dce5ef;
-            height: 220px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0b2a52;
-            font-weight: bold;
+        .flickr-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
+
+        /* ==============================
+           BUTTON
+           ============================== */
+
+        .button {
+            display: inline-block;
+            background: #1261a0;
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background: #1e90ff;
+        }
+
+        /* ==============================
+           FOOTER
+           ============================== */
 
         footer {
-            background-color: #06152a;
-            color: white;
+            background: #051326;
             text-align: center;
             padding: 25px;
+            color: #9bb8d4;
             margin-top: 40px;
         }
 
-        @media (max-width: 800px) {
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+        /* ==============================
+           MOBILE PHONE DISPLAY
+           ============================== */
 
-        @media (max-width: 500px) {
-            .gallery {
-                grid-template-columns: 1fr;
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 30px;
             }
 
             nav a {
-                display: inline-block;
-                margin: 6px 10px;
+                display: block;
+                margin: 10px;
             }
+
+            main {
+                padding: 20px 12px;
+            }
+
+            .flickr-container {
+                height: 600px;
+            }
+
         }
     </style>
+
 </head>
 
 <body>
 
+<!-- ==============================
+     HEADER
+     ============================== -->
+
 <header>
-    <h1>📷 Photos</h1>
-    <p>Photos by Liam Sanders</p>
-</header>
+
+    <h1>Photos</h1>
+
+    </header>
+
+
+<!-- ==============================
+     NAVIGATION
+     ============================== -->
 
 <nav>
+
     <a href="/">Home</a>
     <a href="/radio/">Radio</a>
     <a href="/photos/">Photos</a>
     <a href="/personal/">Personal</a>
+
 </nav>
 
-<div class="container">
 
-    <section class="card">
-        <h2>Photo Gallery</h2>
+<!-- ==============================
+     MAIN CONTENT
+     ============================== -->
 
-        <p>
-            Welcome to my photo gallery. I'll be adding
-            photos here over time.
-        </p>
-    </section>
+<main>
 
     <section class="card">
 
-        <div class="gallery">
+        <h2>My Photos</h2>
 
-            <div class="photo-placeholder">
-                Photo 1
-            </div>
+        <div class="flickr-container">
 
-            <div class="photo-placeholder">
-                Photo 2
-            </div>
-
-            <div class="photo-placeholder">
-                Photo 3
-            </div>
-
-            <div class="photo-placeholder">
-                Photo 4
-            </div>
-
-            <div class="photo-placeholder">
-                Photo 5
-            </div>
-
-            <div class="photo-placeholder">
-                Photo 6
-            </div>
+            <iframe
+                src="https://www.flickr.com/photos/bcscodecatcher/"
+                title="Liam Sanders Flickr Photos"
+                loading="lazy">
+            </iframe>
 
         </div>
 
+        <p>
+            <a class="button"
+               href="https://www.flickr.com/photos/bcscodecatcher/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Open Flickr
+            </a>
+        </p>
+
     </section>
 
-</div>
+</main>
+
+
+<!-- ==============================
+     FOOTER
+     ============================== -->
 
 <footer>
-    <p>&copy; 2026 Liam Sanders - KJ5QVW. All rights reserved.</p>
+
+    <p>
+        © 2026 Liam Sanders
+    </p>
+
 </footer>
 
 </body>
