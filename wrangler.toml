@@ -1,0 +1,10 @@
+name = "kj5qvw-website"
+
+pages_build_output_dir = "."
+
+compatibility_date = "2026-08-28"
+
+[[d1_databases]]
+binding = "BLOG_DB"
+database_name = "kj5qvw-blog"
+database_id = "REPLACE_WITH_YOUR_DATABASE_ID"
