@@ -7,4 +7,4 @@ compatibility_date = "2026-08-28"
 [[d1_databases]]
 binding = "BLOG_DB"
 database_name = "kj5qvw-blog"
-database_id = "REPLACE_WITH_YOUR_DATABASE_ID"
+database_id = d81860b4-afd7-4cb3-8fe7-bbbee5918fd9
