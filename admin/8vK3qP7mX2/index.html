@@ -61,7 +61,7 @@
 
         label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 7px;
             font-weight: bold;
         }
 
@@ -70,9 +70,11 @@
             width: 100%;
             padding: 12px;
             margin: 0 0 18px;
+
             background: #051326;
             border: 1px solid #164b82;
             border-radius: 6px;
+
             color: white;
             font-family: inherit;
             font-size: 15px;
@@ -85,22 +87,30 @@
         }
 
         textarea {
-            min-height: 300px;
+            min-height: 320px;
             resize: vertical;
         }
 
-        button {
+        button,
+        .button-link {
+            display: inline-block;
+
             background: #1261a0;
             border: none;
             border-radius: 6px;
+
             color: white;
             padding: 11px 18px;
+
             font-weight: bold;
-            cursor: pointer;
             font-size: 14px;
+
+            cursor: pointer;
+            text-decoration: none;
         }
 
-        button:hover {
+        button:hover,
+        .button-link:hover {
             background: #1e90ff;
         }
 
@@ -110,6 +120,14 @@
 
         .delete:hover {
             background: #b83246;
+        }
+
+        .cancel {
+            background: #555;
+        }
+
+        .cancel:hover {
+            background: #777;
         }
 
         .logout {
@@ -131,7 +149,7 @@
         }
 
         .post h3 {
-            margin: 0 0 6px;
+            margin: 0 0 7px;
             color: #4da6ff;
             font-size: 21px;
         }
@@ -176,26 +194,17 @@
             padding: 20px 0;
         }
 
+        .form-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
         .admin-links {
             margin-top: 20px;
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
-        }
-
-        .admin-links a {
-            display: inline-block;
-            padding: 10px 15px;
-            background: #1261a0;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .admin-links a:hover {
-            background: #1e90ff;
         }
 
         footer {
@@ -228,6 +237,7 @@
 
 <body>
 
+
 <header>
 
     <h1>KJ5QVW Blog Admin</h1>
@@ -236,9 +246,13 @@
 
 </header>
 
+
 <main>
 
+
+    <!-- ========================= -->
     <!-- LOGIN -->
+    <!-- ========================= -->
 
     <div id="login" class="card">
 
@@ -270,15 +284,22 @@
     </div>
 
 
+    <!-- ========================= -->
     <!-- DASHBOARD -->
+    <!-- ========================= -->
 
     <div id="dashboard">
 
-        <!-- CREATE POST -->
+
+        <!-- ========================= -->
+        <!-- CREATE / EDIT POST -->
+        <!-- ========================= -->
 
         <div class="card">
 
-            <h2>Create Blog Post</h2>
+            <h2 id="formTitle">
+                Create Blog Post
+            </h2>
 
             <div id="message"></div>
 
@@ -295,6 +316,7 @@
                     required
                 >
 
+
                 <label for="excerpt">
                     Excerpt
                 </label>
@@ -306,6 +328,7 @@
                     placeholder="Short description shown on the blog page"
                 >
 
+
                 <label for="content">
                     Content
                 </label>
@@ -316,20 +339,42 @@
                     placeholder="Write your blog post here..."
                 ></textarea>
 
-                <button type="submit">
-                    Publish Post
-                </button>
+
+                <div class="form-buttons">
+
+                    <button
+                        type="submit"
+                        id="submitButton"
+                    >
+                        Publish Post
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancelButton"
+                        class="cancel"
+                        onclick="cancelEdit()"
+                        style="display:none;"
+                    >
+                        Cancel Edit
+                    </button>
+
+                </div>
 
             </form>
 
         </div>
 
 
+        <!-- ========================= -->
         <!-- EXISTING POSTS -->
+        <!-- ========================= -->
 
         <div class="card">
 
-            <h2>Existing Posts</h2>
+            <h2>
+                Existing Posts
+            </h2>
 
             <div id="posts">
 
@@ -339,9 +384,14 @@
 
             </div>
 
+
             <div class="admin-links">
 
-                <a href="/blog/" target="_blank">
+                <a
+                    class="button-link"
+                    href="/blog/"
+                    target="_blank"
+                >
                     View Blog
                 </a>
 
@@ -356,9 +406,12 @@
 
         </div>
 
+
     </div>
 
+
 </main>
+
 
 <footer>
 
@@ -371,84 +424,92 @@
 
 <script>
 
-    /*
-     * ============================
-     * CHECK LOGIN
-     * ============================
-     */
 
-    async function checkLogin() {
+/* =========================================================
+   GLOBAL EDIT STATE
+   ========================================================= */
 
-        try {
+let editingPostId = null;
 
-            const response =
-                await fetch("/api/admin/posts");
 
-            if (response.ok) {
+/* =========================================================
+   CHECK LOGIN
+   ========================================================= */
 
-                showDashboard();
+async function checkLogin() {
 
-            }
+    try {
 
-        } catch (error) {
+        const response =
+            await fetch("/api/admin/posts");
 
-            console.error(error);
+        if (response.ok) {
+
+            showDashboard();
 
         }
 
-    }
+    } catch (error) {
 
-
-    /*
-     * ============================
-     * SHOW DASHBOARD
-     * ============================
-     */
-
-    function showDashboard() {
-
-        document.getElementById("login")
-            .style.display = "none";
-
-        document.getElementById("dashboard")
-            .style.display = "block";
-
-        loadPosts();
+        console.error(error);
 
     }
 
+}
 
-    /*
-     * ============================
-     * LOGIN
-     * ============================
-     */
 
-    document
-        .getElementById("loginForm")
-        .addEventListener("submit", async function(event) {
+/* =========================================================
+   SHOW DASHBOARD
+   ========================================================= */
+
+function showDashboard() {
+
+    document.getElementById("login")
+        .style.display = "none";
+
+    document.getElementById("dashboard")
+        .style.display = "block";
+
+    loadPosts();
+
+}
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+document
+    .getElementById("loginForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
 
             event.preventDefault();
 
             const password =
-                document.getElementById("password").value;
+                document.getElementById("password")
+                    .value;
 
             try {
 
                 const response =
-                    await fetch("/api/admin/login", {
+                    await fetch(
+                        "/api/admin/login",
+                        {
+                            method: "POST",
 
-                        method: "POST",
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
 
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
+                            body: JSON.stringify({
+                                password: password
+                            })
+                        }
+                    );
 
-                        body: JSON.stringify({
-                            password: password
-                        })
-
-                    });
 
                 if (response.ok) {
 
@@ -460,8 +521,9 @@
                 } else {
 
                     const data =
-                        await response.json()
-                        .catch(() => ({}));
+                        await response
+                            .json()
+                            .catch(() => ({}));
 
                     alert(
                         data.error ||
@@ -472,26 +534,30 @@
 
             } catch (error) {
 
+                console.error(error);
+
                 alert(
                     "Unable to connect to the server."
                 );
 
             }
 
-        });
+        }
+    );
 
 
-    /*
-     * ============================
-     * CREATE POST
-     * ============================
-     */
+/* =========================================================
+   CREATE / UPDATE POST
+   ========================================================= */
 
-    document
-        .getElementById("postForm")
-        .addEventListener("submit", async function(event) {
+document
+    .getElementById("postForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
 
             event.preventDefault();
+
 
             const title =
                 document.getElementById("title")
@@ -511,6 +577,7 @@
             const message =
                 document.getElementById("message");
 
+
             if (!title || !content) {
 
                 message.textContent =
@@ -522,26 +589,114 @@
 
             }
 
+
             try {
 
+
+                /* =========================
+                   EDIT EXISTING POST
+                   ========================= */
+
+                if (editingPostId !== null) {
+
+                    const response =
+                        await fetch(
+                            "/api/admin/posts?id=" +
+                            encodeURIComponent(
+                                editingPostId
+                            ),
+                            {
+                                method: "PUT",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+
+                                    title: title,
+                                    excerpt: excerpt,
+                                    content: content
+
+                                })
+                            }
+                        );
+
+
+                    if (response.ok) {
+
+                        message.textContent =
+                            "Post updated successfully.";
+
+                        message.className =
+                            "success";
+
+                        cancelEdit();
+
+                        await loadPosts();
+
+                        return;
+
+                    }
+
+
+                    if (response.status === 401) {
+
+                        alert(
+                            "Your admin session has expired. " +
+                            "Please log in again."
+                        );
+
+                        location.reload();
+
+                        return;
+
+                    }
+
+
+                    const data =
+                        await response
+                            .json()
+                            .catch(() => ({}));
+
+                    message.textContent =
+                        data.error ||
+                        "Unable to update post.";
+
+                    message.className =
+                        "error";
+
+                    return;
+
+                }
+
+
+                /* =========================
+                   CREATE NEW POST
+                   ========================= */
+
                 const response =
-                    await fetch("/api/admin/posts", {
+                    await fetch(
+                        "/api/admin/posts",
+                        {
+                            method: "POST",
 
-                        method: "POST",
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
 
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
+                            body: JSON.stringify({
 
-                        body: JSON.stringify({
+                                title: title,
+                                excerpt: excerpt,
+                                content: content
 
-                            title: title,
-                            excerpt: excerpt,
-                            content: content
+                            })
+                        }
+                    );
 
-                        })
-
-                    });
 
                 if (response.ok) {
 
@@ -552,14 +707,18 @@
                     message.textContent =
                         "Post published successfully.";
 
-                    message.className = "success";
+                    message.className =
+                        "success";
 
-                    loadPosts();
+                    await loadPosts();
 
-                } else if (response.status === 401) {
+                } else if (
+                    response.status === 401
+                ) {
 
                     alert(
-                        "Your admin session has expired. Please log in again."
+                        "Your admin session has expired. " +
+                        "Please log in again."
                     );
 
                     location.reload();
@@ -567,103 +726,120 @@
                 } else {
 
                     const data =
-                        await response.json()
-                        .catch(() => ({}));
+                        await response
+                            .json()
+                            .catch(() => ({}));
 
                     message.textContent =
                         data.error ||
                         "Unable to publish post.";
 
-                    message.className = "error";
+                    message.className =
+                        "error";
 
                 }
 
+
             } catch (error) {
+
+                console.error(error);
 
                 message.textContent =
                     "Unable to connect to the server.";
 
-                message.className = "error";
+                message.className =
+                    "error";
 
             }
 
-        });
+        }
+    );
 
 
-    /*
-     * ============================
-     * LOAD POSTS
-     * ============================
-     */
+/* =========================================================
+   LOAD POSTS
+   ========================================================= */
 
-    async function loadPosts() {
+async function loadPosts() {
 
-        const container =
-            document.getElementById("posts");
+    const container =
+        document.getElementById("posts");
+
+
+    container.innerHTML =
+        '<div class="empty">Loading posts...</div>';
+
+
+    try {
+
+        const response =
+            await fetch("/api/admin/posts");
+
+
+        if (response.status === 401) {
+
+            document.getElementById("login")
+                .style.display = "block";
+
+            document.getElementById("dashboard")
+                .style.display = "none";
+
+            return;
+
+        }
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Unable to load posts."
+            );
+
+        }
+
+
+        const posts =
+            await response.json();
+
+
+        if (!posts.length) {
+
+            container.innerHTML = `
+                <div class="empty">
+                    No blog posts yet.
+                </div>
+            `;
+
+            return;
+
+        }
+
 
         container.innerHTML =
-            '<div class="empty">Loading posts...</div>';
-
-        try {
-
-            const response =
-                await fetch("/api/admin/posts");
-
-            if (response.status === 401) {
-
-                document.getElementById("login")
-                    .style.display = "block";
-
-                document.getElementById("dashboard")
-                    .style.display = "none";
-
-                return;
-
-            }
-
-            if (!response.ok) {
-
-                throw new Error(
-                    "Unable to load posts."
-                );
-
-            }
-
-            const posts =
-                await response.json();
-
-            if (!posts.length) {
-
-                container.innerHTML = `
-                    <div class="empty">
-                        No blog posts yet.
-                    </div>
-                `;
-
-                return;
-
-            }
-
-            container.innerHTML =
-                posts.map(post => {
+            posts
+                .map(post => {
 
                     const date =
-                        new Date(post.created_at)
-                            .toLocaleDateString(
-                                "en-US",
-                                {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric"
-                                }
-                            );
+                        new Date(
+                            post.created_at
+                        ).toLocaleDateString(
+                            "en-US",
+                            {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric"
+                            }
+                        );
+
 
                     return `
 
                         <div class="post">
 
                             <h3>
-                                ${escapeHTML(post.title)}
+                                ${escapeHTML(
+                                    post.title
+                                )}
                             </h3>
 
                             <div class="date">
@@ -672,42 +848,54 @@
 
                             ${
                                 post.excerpt
-                                ? `
+                                ?
+                                `
                                     <div class="excerpt">
-                                        ${escapeHTML(post.excerpt)}
+                                        ${escapeHTML(
+                                            post.excerpt
+                                        )}
                                     </div>
-                                  `
-                                : ""
+                                `
+                                :
+                                ""
                             }
+
 
                             <div class="post-actions">
 
+
+                                <!-- VIEW -->
+
                                 <a
+                                    class="button-link"
                                     href="/blog/post.html?id=${encodeURIComponent(post.id)}"
                                     target="_blank"
-                                    style="
-                                        display:inline-block;
-                                        padding:11px 18px;
-                                        background:#1261a0;
-                                        color:white;
-                                        text-decoration:none;
-                                        border-radius:6px;
-                                        font-weight:bold;
-                                        font-size:14px;
-                                    "
                                 >
                                     View
                                 </a>
 
+
+                                <!-- EDIT -->
+
+                                <button
+                                    onclick="editPost(${post.id})"
+                                >
+                                    Edit
+                                </button>
+
+
+                                <!-- DELETE -->
+
                                 <button
                                     class="delete"
-                                    onclick="deletePost(
+                                    onclick='deletePost(
                                         ${post.id},
                                         ${JSON.stringify(post.title)}
-                                    )"
+                                    )'
                                 >
                                     Delete
                                 </button>
+
 
                             </div>
 
@@ -715,140 +903,284 @@
 
                     `;
 
-                }).join("");
+                })
+                .join("");
 
-        } catch (error) {
 
-            console.error(error);
+    } catch (error) {
 
-            container.innerHTML = `
-                <div class="empty">
-                    Unable to load posts.
-                </div>
-            `;
+        console.error(error);
 
-        }
+        container.innerHTML = `
+            <div class="empty">
+                Unable to load posts.
+            </div>
+        `;
 
     }
 
+}
 
-    /*
-     * ============================
-     * DELETE POST
-     * ============================
-     */
 
-    async function deletePost(id, title) {
+/* =========================================================
+   EDIT POST
+   ========================================================= */
 
-        const confirmed =
-            confirm(
-                `Are you sure you want to delete "${title}"?\n\n` +
-                `This cannot be undone.`
+async function editPost(id) {
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/post?id=" +
+                encodeURIComponent(id)
             );
 
-        if (!confirmed) {
-            return;
-        }
 
-        try {
-
-            const response =
-                await fetch(
-                    "/api/admin/posts?id=" +
-                    encodeURIComponent(id),
-                    {
-                        method: "DELETE"
-                    }
-                );
-
-            if (response.ok) {
-
-                loadPosts();
-
-            } else if (response.status === 401) {
-
-                alert(
-                    "Your admin session has expired. Please log in again."
-                );
-
-                location.reload();
-
-            } else {
-
-                const data =
-                    await response.json()
-                    .catch(() => ({}));
-
-                alert(
-                    data.error ||
-                    "Unable to delete the post."
-                );
-
-            }
-
-        } catch (error) {
+        if (!response.ok) {
 
             alert(
-                "Unable to connect to the server."
+                "Unable to load this post."
             );
 
+            return;
+
         }
+
+
+        const post =
+            await response.json();
+
+
+        editingPostId = id;
+
+
+        document.getElementById("title")
+            .value = post.title || "";
+
+
+        document.getElementById("excerpt")
+            .value = post.excerpt || "";
+
+
+        document.getElementById("content")
+            .value = post.content || "";
+
+
+        document.getElementById("formTitle")
+            .textContent = "Edit Blog Post";
+
+
+        document.getElementById("submitButton")
+            .textContent = "Save Changes";
+
+
+        document.getElementById("cancelButton")
+            .style.display = "inline-block";
+
+
+        document.getElementById("message")
+            .textContent =
+                "You are editing this post.";
+
+
+        document.getElementById("message")
+            .className = "";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Unable to connect to the server."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CANCEL EDIT
+   ========================================================= */
+
+function cancelEdit() {
+
+    editingPostId = null;
+
+
+    document
+        .getElementById("postForm")
+        .reset();
+
+
+    document.getElementById("formTitle")
+        .textContent = "Create Blog Post";
+
+
+    document.getElementById("submitButton")
+        .textContent = "Publish Post";
+
+
+    document.getElementById("cancelButton")
+        .style.display = "none";
+
+
+    document.getElementById("message")
+        .textContent = "";
+
+
+    document.getElementById("message")
+        .className = "";
+
+}
+
+
+/* =========================================================
+   DELETE POST
+   ========================================================= */
+
+async function deletePost(id, title) {
+
+
+    const confirmed =
+        confirm(
+            `Are you sure you want to delete "${title}"?\n\n` +
+            `This cannot be undone.`
+        );
+
+
+    if (!confirmed) {
+
+        return;
 
     }
 
 
-    /*
-     * ============================
-     * LOG OUT
-     * ============================
-     */
+    try {
 
-    async function logout() {
 
-        try {
-
+        const response =
             await fetch(
-                "/api/admin/logout",
+                "/api/admin/posts?id=" +
+                encodeURIComponent(id),
                 {
-                    method: "POST"
+                    method: "DELETE"
                 }
             );
 
-        } finally {
 
-            location.reload();
+        if (response.ok) {
+
+            if (editingPostId === id) {
+
+                cancelEdit();
+
+            }
+
+            await loadPosts();
+
+            alert(
+                "Post deleted successfully."
+            );
+
+            return;
 
         }
 
+
+        if (response.status === 401) {
+
+            alert(
+                "Your admin session has expired. " +
+                "Please log in again."
+            );
+
+            location.reload();
+
+            return;
+
+        }
+
+
+        const data =
+            await response
+                .json()
+                .catch(() => ({}));
+
+
+        alert(
+            data.error ||
+            "Unable to delete the post."
+        );
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Unable to connect to the server."
+        );
+
     }
 
+}
 
-    /*
-     * ============================
-     * HTML ESCAPING
-     * ============================
-     */
 
-    function escapeHTML(text) {
+/* =========================================================
+   LOG OUT
+   ========================================================= */
 
-        const div =
-            document.createElement("div");
+async function logout() {
 
-        div.textContent =
-            text ?? "";
+    try {
 
-        return div.innerHTML;
+        await fetch(
+            "/api/admin/logout",
+            {
+                method: "POST"
+            }
+        );
+
+    } finally {
+
+        location.reload();
 
     }
 
+}
 
-    /*
-     * ============================
-     * START
-     * ============================
-     */
 
-    checkLogin();
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text ?? "";
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+checkLogin();
 
 </script>
 
