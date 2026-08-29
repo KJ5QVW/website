@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -134,6 +135,20 @@ footer {
     margin-top: 40px;
 }
 
+footer p {
+    margin: 6px 0;
+}
+
+.admin-login {
+    font-size: 12px;
+    color: #718ba6;
+    text-decoration: none;
+}
+
+.admin-login:hover {
+    color: #4da6ff;
+}
+
 @media (max-width: 700px) {
 
     header h1 {
@@ -148,50 +163,76 @@ footer {
     main {
         padding: 20px 12px;
     }
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
+
     <h1>KJ5QVW</h1>
+
 </header>
 
+
 <nav>
+
     <a href="/">Home</a>
+
     <a href="/radio/">Radio</a>
+
     <a href="/photos/">Photos</a>
+
     <a href="/personal/">Personal</a>
+
     <a href="/blog/">Blog</a>
+
 </nav>
+
 
 <main>
 
-<section class="page-title">
+    <section class="page-title">
 
-    <h2>Blog</h2>
+        <h2>Blog</h2>
 
-    <p>
-        Posts, projects, and other things I'm working on.
-    </p>
+        <p>
+            Posts, projects, and other things I'm working on.
+        </p>
 
-</section>
+    </section>
 
-<div id="posts">
 
-    <div class="empty">
-        Loading posts...
+    <div id="posts">
+
+        <div class="empty">
+            Loading posts...
+        </div>
+
     </div>
-
-</div>
 
 </main>
 
+
 <footer>
-    <p>© 2026 Liam Sanders</p>
+
+    <p>
+        © 2026 Liam Sanders
+    </p>
+
+    <a
+        class="admin-login"
+        href="/admin/8vK3qP7mX2/"
+    >
+        Admin Login
+    </a>
+
 </footer>
+
 
 <script>
 
@@ -266,6 +307,7 @@ async function loadPosts() {
 
 }
 
+
 function escapeHTML(text) {
 
     const div = document.createElement("div");
@@ -276,9 +318,11 @@ function escapeHTML(text) {
 
 }
 
+
 loadPosts();
 
 </script>
 
 </body>
+
 </html>
