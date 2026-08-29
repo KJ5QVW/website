@@ -1,4 +1,3 @@
-javascript
 function isAuthenticated(request) {
 
     const cookie = request.headers.get("Cookie") || "";
