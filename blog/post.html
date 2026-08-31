@@ -2,150 +2,163 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - KJ5QVW</title>
 
-<title>Blog Post - KJ5QVW</title>
+    <link rel="icon" type="image/png" href="../android-chrome-512x512.png">
 
-<link rel="icon" type="image/png" href="../android-chrome-512x512.png">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-<style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #071a33;
+            color: white;
+        }
 
-* {
-    box-sizing: border-box;
-}
+        header {
+            background: #0b2a52;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 3px solid #1e90ff;
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #071a33;
-    color: white;
-}
+        header h1 {
+            margin: 0;
+            font-size: 42px;
+        }
 
-header {
-    background: #0b2a52;
-    padding: 30px 20px;
-    text-align: center;
-    border-bottom: 3px solid #1e90ff;
-}
+        header p {
+            color: #b9d9ff;
+        }
 
-header h1 {
-    margin: 0;
-    font-size: 42px;
-}
+        nav {
+            background: #051326;
+            text-align: center;
+            padding: 15px;
+        }
 
-header p {
-    color: #b9d9ff;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
 
-nav {
-    background: #051326;
-    text-align: center;
-    padding: 15px;
-}
+        nav a:hover {
+            color: #4da6ff;
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-}
+        main {
+            max-width: 900px;
+            margin: auto;
+            padding: 30px 20px;
+        }
 
-nav a:hover {
-    color: #4da6ff;
-}
+        article {
+            background: #0b2547;
+            border: 1px solid #164b82;
+            border-radius: 12px;
+            padding: 35px;
+        }
 
-main {
-    max-width: 900px;
-    margin: auto;
-    padding: 30px 20px;
-}
+        h2 {
+            color: #4da6ff;
+            margin-top: 0;
+            font-size: 32px;
+        }
 
-article {
-    background: #0b2547;
-    border: 1px solid #164b82;
-    border-radius: 12px;
-    padding: 35px;
-}
+        .date {
+            color: #9bb8d4;
+            margin-bottom: 30px;
+        }
 
-h2 {
-    color: #4da6ff;
-    margin-top: 0;
-    font-size: 32px;
-}
+        .content {
+            color: #d8eaff;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            margin: 0;
+            padding: 0;
+        }
 
-.date {
-    color: #9bb8d4;
-    margin-bottom: 30px;
-}
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            background: #1261a0;
+            padding: 10px 16px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
 
-.content {
-    color: #d8eaff;
-    line-height: 1.8;
-    white-space: pre-wrap;
-}
+        .back:hover {
+            background: #1e90ff;
+        }
 
-.back {
-    display: inline-block;
-    margin-top: 25px;
-    background: #1261a0;
-    padding: 10px 16px;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-}
+        footer {
+            background: #051326;
+            text-align: center;
+            padding: 25px;
+            color: #9bb8d4;
+            margin-top: 40px;
+        }
 
-.back:hover {
-    background: #1e90ff;
-}
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 34px;
+            }
 
-footer {
-    background: #051326;
-    text-align: center;
-    padding: 25px;
-    color: #9bb8d4;
-    margin-top: 40px;
-}
+            nav a {
+                display: inline-block;
+                margin: 5px 8px;
+            }
 
-</style>
+            main {
+                padding: 20px 10px;
+            }
+
+            article {
+                padding: 25px 20px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
 
 </head>
 
 <body>
 
 <header>
-
     <h1>KJ5QVW</h1>
-
     <p>Liam Sanders</p>
-
 </header>
 
 <nav>
-
     <a href="/">Home</a>
     <a href="/radio/">Radio</a>
     <a href="/photos/">Photos</a>
     <a href="/personal/">Personal</a>
     <a href="/blog/">Blog</a>
-
 </nav>
 
 <main>
 
-<article id="post">
-
-    Loading...
-
-</article>
+    <article id="post">
+        Loading...
+    </article>
 
 </main>
 
 <footer>
-
     <p>© 2026 Liam Sanders</p>
-
 </footer>
 
 <script>
@@ -164,7 +177,6 @@ async function loadPost() {
             "<h2>Post not found</h2>";
 
         return;
-
     }
 
     try {
@@ -183,11 +195,11 @@ async function loadPost() {
 
         const date =
             new Date(post.created_at)
-            .toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric"
-            });
+                .toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                });
 
         container.innerHTML = `
 
@@ -198,7 +210,7 @@ async function loadPost() {
             </div>
 
             <div class="content">
-                ${escapeHTML(post.content)}
+                ${escapeHTML(cleanContent(post.content))}
             </div>
 
             <a class="back" href="/blog/">
@@ -210,19 +222,47 @@ async function loadPost() {
     } catch {
 
         container.innerHTML = `
+
             <h2>Post not found</h2>
+
             <a class="back" href="/blog/">
                 ← Back to Blog
             </a>
+
         `;
 
     }
 
 }
 
+
+/*
+    Remove unwanted indentation from blog post content
+    while preserving intentional line breaks.
+*/
+function cleanContent(text) {
+
+    if (!text) {
+        return "";
+    }
+
+    return text
+        .trim()
+        .split("\n")
+        .map(line => line.trim())
+        .join("\n");
+
+}
+
+
+/*
+    Prevent HTML entered into a post from being
+    interpreted as actual HTML.
+*/
 function escapeHTML(text) {
 
-    const div = document.createElement("div");
+    const div =
+        document.createElement("div");
 
     div.textContent = text;
 
@@ -230,9 +270,11 @@ function escapeHTML(text) {
 
 }
 
+
 loadPost();
 
 </script>
 
 </body>
+
 </html>
