@@ -1,215 +1,331 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Radio - Liam Sanders</title>
+<title>Radio - Liam Sanders</title>
 
-    <link rel="icon" type="image/png" href="../android-chrome-512x5x12.png">
+<link rel="icon" type="image/png" href="../android-chrome-512x512.png">
 
-    <style>
+<style>
 
-        /* ==============================
-           MAIN WEBSITE COLORS
-           ============================== */
+/* ==============================
+MAIN WEBSITE COLORS
+============================== */
 
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #071a33;
-            color: #ffffff;
-        }
+body {
 
+margin: 0;
 
-        /* ==============================
-           HEADER
-           ============================== */
+font-family: Arial, Helvetica, sans-serif;
 
-        header {
-            background: #0b2a52;
-            padding: 30px 20px;
-            text-align: center;
-            border-bottom: 3px solid #1e90ff;
-        }
+background: #071a33;
 
-        header h1 {
-            margin: 0;
-            font-size: 42px;
-        }
+color: #ffffff;
 
-        header p {
-            margin: 8px 0 0;
-            font-size: 18px;
-            color: #b9d9ff;
-        }
+}
 
 
-        /* ==============================
-           NAVIGATION BAR
-           ============================== */
+/* ==============================
+HEADER
+============================== */
 
-        nav {
-            background: #051326;
-            text-align: center;
-            padding: 15px;
-        }
+header {
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
+background: #0b2a52;
 
-        nav a:hover {
-            color: #4da6ff;
-        }
+padding: 30px 20px;
 
+text-align: center;
 
-        /* ==============================
-           MAIN CONTENT
-           ============================== */
+border-bottom: 3px solid #1e90ff;
 
-        main {
-            max-width: 1200px;
-            margin: auto;
-            padding: 30px 20px;
-        }
+}
 
+header h1 {
 
-        /* ==============================
-           CARDS
-           ============================== */
+margin: 0;
 
-        .card {
-            background: #0b2547;
-            border: 1px solid #164b82;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
+font-size: 42px;
 
-        .card h2 {
-            color: #4da6ff;
-            margin-top: 0;
-        }
+}
+
+header p {
+
+margin: 8px 0 0;
+
+font-size: 18px;
+
+color: #b9d9ff;
+
+}
 
 
-        /* ==============================
-           TABLES
-           ============================== */
+/* ==============================
+NAVIGATION BAR
+============================== */
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+nav {
 
-        th,
-        td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #28527d;
-        }
+background: #051326;
 
-        th {
-            color: #4da6ff;
-        }
+text-align: center;
 
+padding: 15px;
 
-        /* ==============================
-           QRZ BOX
-           ============================== */
+}
 
-        .qrz-box {
-            text-align: center;
-        }
+nav a {
 
-        .qrz-box p {
-            color: #b9d9ff;
-        }
+color: white;
 
-        .button {
-            display: inline-block;
-            background: #1261a0;
-            color: white;
-            text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 6px;
-            margin-top: 10px;
-        }
+text-decoration: none;
 
-        .button:hover {
-            background: #1e90ff;
-        }
+margin: 0 15px;
+
+font-weight: bold;
+
+}
+
+nav a:hover {
+
+color: #4da6ff;
+
+}
 
 
-        /* ==============================
-           FOOTER
-           ============================== */
+/* ==============================
+MAIN CONTENT
+============================== */
 
-        footer {
-            background: #051326;
-            text-align: center;
-            padding: 25px;
-            color: #9bb8d4;
-            margin-top: 40px;
-        }
+main {
 
-        footer p {
-            margin: 6px 0;
-        }
+max-width: 1200px;
 
-        .admin-login {
-            font-size: 12px;
-            color: #718ba6;
-            text-decoration: none;
-        }
+margin: auto;
 
-        .admin-login:hover {
-            color: #4da6ff;
-        }
+padding: 30px 20px;
+
+}
 
 
-        /* ==============================
-           MOBILE PHONE DISPLAY
-           ============================== */
+/* ==============================
+CARDS
+============================== */
 
-        @media (max-width: 600px) {
+.card {
 
-            header h1 {
-                font-size: 30px;
-            }
+background: #0b2547;
 
-            nav a {
-                display: block;
-                margin: 10px;
-            }
+border: 1px solid #164b82;
 
-            main {
-                padding: 20px 12px;
-            }
+border-radius: 12px;
 
-            table {
-                font-size: 14px;
-            }
+padding: 25px;
 
-            th,
-            td {
-                padding: 8px;
-            }
+margin-bottom: 25px;
 
-            .button {
-                display: block;
-                text-align: center;
-            }
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 
-        }
+}
 
-    </style>
+.card h2 {
+
+color: #4da6ff;
+
+margin-top: 0;
+
+}
+
+
+/* ==============================
+TABLES
+============================== */
+
+table {
+
+width: 100%;
+
+border-collapse: collapse;
+
+}
+
+th,
+td {
+
+padding: 12px;
+
+text-align: left;
+
+border-bottom: 1px solid #28527d;
+
+}
+
+th {
+
+color: #4da6ff;
+
+}
+
+
+/* ==============================
+LINKS
+============================== */
+
+.card a {
+
+color: #4da6ff;
+
+}
+
+.card a:hover {
+
+color: #8ac7ff;
+
+}
+
+
+/* ==============================
+QRZ BOX
+============================== */
+
+.qrz-box {
+
+text-align: center;
+
+}
+
+.qrz-box p {
+
+color: #b9d9ff;
+
+}
+
+
+/* ==============================
+BUTTON
+============================== */
+
+.button {
+
+display: inline-block;
+
+background: #1261a0;
+
+color: white !important;
+
+text-decoration: none;
+
+padding: 10px 18px;
+
+border-radius: 6px;
+
+margin-top: 10px;
+
+}
+
+.button:hover {
+
+background: #1e90ff;
+
+}
+
+
+/* ==============================
+FOOTER
+============================== */
+
+footer {
+
+background: #051326;
+
+text-align: center;
+
+padding: 25px;
+
+color: #9bb8d4;
+
+margin-top: 40px;
+
+}
+
+footer p {
+
+margin: 6px 0;
+
+}
+
+.admin-login {
+
+font-size: 12px;
+
+color: #718ba6;
+
+text-decoration: none;
+
+}
+
+.admin-login:hover {
+
+color: #4da6ff;
+
+}
+
+
+/* ==============================
+MOBILE PHONE DISPLAY
+============================== */
+
+@media (max-width: 600px) {
+
+header h1 {
+
+font-size: 30px;
+
+}
+
+nav a {
+
+display: block;
+
+margin: 10px;
+
+}
+
+main {
+
+padding: 20px 12px;
+
+}
+
+table {
+
+font-size: 14px;
+
+}
+
+th,
+td {
+
+padding: 8px;
+
+}
+
+.button {
+
+display: block;
+
+text-align: center;
+
+}
+
+}
+
+</style>
 
 </head>
 
@@ -218,252 +334,300 @@
 
 
 <!-- ==============================
-     HEADER
-     ============================== -->
+HEADER
+============================== -->
 
 <header>
 
-    <h1>KJ5QVW</h1>
+<h1>KJ5QVW</h1>
 
 </header>
 
 
 <!-- ==============================
-     NAVIGATION
-     ============================== -->
+NAVIGATION
+============================== -->
 
 <nav>
 
-    <a href="/">Home</a>
+<a href="/">Home</a>
 
-    <a href="/radio/">Radio</a>
+<a href="/radio/">Radio</a>
 
-    <a href="/photos/">Photos</a>
+<a href="/photos/">Photos</a>
 
-    <a href="/personal/">Personal</a>
+<a href="/personal/">Personal</a>
 
-    <a href="/blog/">Blog</a>
+<a href="/blog/">Blog</a>
 
 </nav>
 
 
 <!-- ==============================
-     MAIN CONTENT
-     ============================== -->
+MAIN CONTENT
+============================== -->
 
 <main>
 
 
-    <!-- ==============================
-         EQUIPMENT SECTION
-         ============================== -->
+<!-- ==============================
+EQUIPMENT SECTION
+============================== -->
 
-    <section class="card">
+<section class="card">
 
-        <h2>My Equipment</h2>
+<h2>My Equipment</h2>
 
-        <table>
+<table>
 
-            <tr>
+<tr>
 
-                <th>Radio</th>
+<th>Radio</th>
 
-                <th>Band</th>
+<th>Band</th>
 
-                <th>Purpose</th>
+<th>Purpose</th>
 
-            </tr>
+</tr>
 
 
-            <tr>
+<tr>
 
-                <td>Yaesu FT-65</td>
+<td>Yaesu FT-65</td>
 
-                <td>2m / 70cm</td>
+<td>2m / 70cm</td>
 
-                <td>
-                    Literally everything analog
-                </td>
+<td>
+Literally everything analog
+</td>
 
-            </tr>
+</tr>
 
 
-            <tr>
+<tr>
 
-                <td>
-                    AnyTone 779UV + Tram 1180
-                </td>
+<td>
+AnyTone 779UV + Tram 1180
+</td>
 
-                <td>
-                    2m / 70cm
-                </td>
+<td>
+2m / 70cm
+</td>
 
-                <td>
-                    Mobile repeater and simplex work
-                </td>
+<td>
+Mobile repeater and simplex work
+</td>
 
-            </tr>
+</tr>
 
 
-            <tr>
+<tr>
 
-                <td>
-                    Baofeng GT-5R
-                </td>
+<td>
+Baofeng GT-5R
+</td>
 
-                <td>
-                    2m / 70cm
-                </td>
+<td>
+2m / 70cm
+</td>
 
-                <td>
-                    Monitoring airband and local VFD dispatch
-                </td>
+<td>
+Monitoring airband and local VFD dispatch
+</td>
 
-            </tr>
+</tr>
 
-        </table>
+</table>
 
-    </section>
+</section>
 
 
-    <!-- ==============================
-         REPEATER SECTION
-         ============================== -->
+<!-- ==============================
+REPEATER SECTION
+============================== -->
 
-    <section class="card">
+<section class="card">
 
-        <h2>Favorite Repeaters</h2>
+<h2>Favorite Repeaters</h2>
 
-        <table>
+<table>
 
-            <tr>
+<tr>
 
-                <th>Repeater</th>
+<th>Repeater</th>
 
-                <th>Frequency</th>
+<th>Frequency</th>
 
-                <th>Tone</th>
+<th>Tone</th>
 
-                <th>Notes</th>
+<th>Notes</th>
 
-            </tr>
+</tr>
 
 
-            <tr>
+<tr>
 
-                <td>
-                    W5BCS
-                </td>
+<td>
+W5BCS
+</td>
 
-                <td>
-                    146.680 MHz
-                </td>
+<td>
+146.680 MHz
+</td>
 
-                <td>
-                    88.5 Hz
-                </td>
+<td>
+88.5 Hz
+</td>
 
-                <td>
-                    My main repeater for monitoring and
-                    ragchewing. I participate in the Tuesday
-                    evening nets as well.
-                </td>
+<td>
+My main repeater for monitoring and
+ragchewing. I participate in the Tuesday
+evening nets as well.
+</td>
 
-            </tr>
+</tr>
 
 
-            <tr>
+<tr>
 
-                <td>
-                    W5AC
-                </td>
+<td>
+W5AC
+</td>
 
-                <td>
-                    146.820 MHz
-                </td>
+<td>
+146.820 MHz
+</td>
 
-                <td>
-                    88.5 Hz
-                </td>
+<td>
+88.5 Hz
+</td>
 
-                <td>
-                    TAMU repeater. I participate in the
-                    Monday evening nets.
-                </td>
+<td>
+TAMU repeater. I participate in the
+Monday evening nets.
+</td>
 
-            </tr>
+</tr>
 
 
-            <tr>
+<tr>
 
-                <td>
-                    WA5AIR
-                </td>
+<td>
+WA5AIR
+</td>
 
-                <td>
-                    443.475 MHz
-                </td>
+<td>
+443.475 MHz
+</td>
 
-                <td>
-                    103.5 Hz
-                </td>
+<td>
+103.5 Hz
+</td>
 
-                <td>
-                    South Coast Reflector.
-                </td>
+<td>
+South Coast Reflector.
+</td>
 
-            </tr>
+</tr>
 
-        </table>
+</table>
 
-    </section>
+</section>
 
 
-    <!-- ==============================
-         QRZ SECTION
-         ============================== -->
+<!-- ==============================
+ORGANIZATIONS SECTION
+============================== -->
 
-    <section class="card qrz-box">
+<section class="card">
 
-        <h2>QRZ</h2>
+<h2>Organizations</h2>
 
-        <p>
-            View my amateur radio profile and station
-            information on QRZ.
-        </p>
+<table>
 
+<tr>
 
-        <a
-            class="button"
-            href="https://www.qrz.com/db/KJ5QVW"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            View My QRZ Page
-        </a>
+<th>Organization</th>
 
-    </section>
+<th>Membership</th>
+
+</tr>
+
+
+<tr>
+
+<td>
+
+<a
+href="https://brazosares.org/"
+target="_blank"
+rel="noopener noreferrer"
+>
+Brazos County ARES
+</a>
+
+</td>
+
+<td>
+Member
+</td>
+
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- ==============================
+QRZ SECTION
+============================== -->
+
+<section class="card qrz-box">
+
+<h2>QRZ</h2>
+
+<p>
+
+View my amateur radio profile and station
+
+information on QRZ.
+
+</p>
+
+
+<a
+class="button"
+href="https://www.qrz.com/db/KJ5QVW"
+target="_blank"
+rel="noopener noreferrer"
+>
+View My QRZ Page
+</a>
+
+</section>
 
 
 </main>
 
 
 <!-- ==============================
-     FOOTER
-     ============================== -->
+FOOTER
+============================== -->
 
 <footer>
 
-    <p>
-        © 2026 Liam Sanders
-    </p>
+<p>
+© 2026 Liam Sanders
+</p>
 
-    <a
-        class="admin-login"
-        href="/admin/8vK3qP7mX2/"
-    >
-        Admin Login
-    </a>
+
+<a
+class="admin-login"
+href="/admin/8vK3qP7mX2/"
+>
+Admin Login
+</a>
 
 </footer>
 
