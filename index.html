@@ -1,357 +1,67 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Liam Sanders - KJ5QVW</title>
-
-    <link rel="icon" type="image/png" href="android-chrome-512x5x12.png">
-
-    <style>
-
-        /* ==============================
-           MAIN WEBSITE COLORS
-           ============================== */
-
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #071a33;
-            color: #ffffff;
-        }
-
-
-        /* ==============================
-           HEADER
-           ============================== */
-
-        header {
-            background: #0b2a52;
-            padding: 30px 20px;
-            text-align: center;
-            border-bottom: 3px solid #1e90ff;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 42px;
-        }
-
-        header p {
-            margin: 8px 0 0;
-            font-size: 18px;
-            color: #b9d9ff;
-        }
-
-
-        /* ==============================
-           NAVIGATION BAR
-           ============================== */
-
-        nav {
-            background: #051326;
-            text-align: center;
-            padding: 15px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #4da6ff;
-        }
-
-
-        /* ==============================
-           MAIN CONTENT
-           ============================== */
-
-        main {
-            max-width: 1200px;
-            margin: auto;
-            padding: 30px 20px;
-        }
-
-
-        /* ==============================
-           WELCOME CARD
-           ============================== */
-
-        .welcome {
-            background: #0b2547;
-            border: 1px solid #164b82;
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 25px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .welcome h2 {
-            color: #4da6ff;
-            margin-top: 0;
-        }
-
-        .welcome p {
-            color: #b9d9ff;
-        }
-
-
-        /* ==============================
-           SECTION SHORTCUTS
-           ============================== */
-
-        .shortcuts {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .shortcut {
-            background: #0b2547;
-            border: 1px solid #164b82;
-            border-radius: 12px;
-            padding: 30px 20px;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: 0.2s;
-        }
-
-        .shortcut:hover {
-            border-color: #1e90ff;
-            transform: translateY(-4px);
-        }
-
-        .shortcut h2 {
-            color: #4da6ff;
-            margin-top: 0;
-        }
-
-        .shortcut p {
-            color: #b9d9ff;
-            line-height: 1.5;
-        }
-
-        .shortcut-button {
-            display: inline-block;
-            background: #1261a0;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 6px;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        .shortcut:hover .shortcut-button {
-            background: #1e90ff;
-        }
-
-
-        /* ==============================
-           FOOTER
-           ============================== */
-
-        footer {
-            background: #051326;
-            text-align: center;
-            padding: 25px;
-            color: #9bb8d4;
-            margin-top: 40px;
-        }
-
-        footer p {
-            margin: 6px 0;
-        }
-
-        .admin-login {
-            font-size: 12px;
-            color: #718ba6;
-            text-decoration: none;
-        }
-
-        .admin-login:hover {
-            color: #4da6ff;
-        }
-
-
-        /* ==============================
-           MOBILE PHONE DISPLAY
-           ============================== */
-
-        @media (max-width: 700px) {
-
-            header h1 {
-                font-size: 30px;
-            }
-
-            nav a {
-                display: block;
-                margin: 10px;
-            }
-
-            main {
-                padding: 20px 12px;
-            }
-
-            .shortcuts {
-                grid-template-columns: 1fr;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liam Sanders - KJ5QVW</title>
+<link rel="icon" type="image/png" href="android-chrome-512x512.png">
+<style>
+:root{--bg:#07111f;--surface:#0d1b2d;--surface2:#102238;--text:#f4f7fb;--muted:#9eafc2;--accent:#4da3ff;--border:#1b3149;--max:1080px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit}
+.site-header{border-bottom:1px solid var(--border);background:rgba(7,17,31,.94);position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
+.header-inner{max-width:var(--max);margin:auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{text-decoration:none;display:flex;align-items:baseline;gap:10px;white-space:nowrap}.brand strong{font-size:18px;letter-spacing:.02em}.brand span{color:var(--muted);font-size:14px}
+nav{display:flex;gap:26px}nav a{text-decoration:none;color:var(--muted);font-size:14px;transition:color .2s}nav a:hover,nav a[aria-current="page"]{color:var(--text)}
+main{max-width:var(--max);margin:auto;padding:90px 24px 70px}
+.hero{max-width:760px;margin-bottom:72px}.eyebrow{margin:0 0 14px;color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.02;letter-spacing:-.045em;margin:0 0 22px}.hero h1 span{color:var(--muted);font-weight:500}.hero p{font-size:19px;color:var(--muted);max-width:650px;margin:0}
+.section-label{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin:0 0 18px}
+.links{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.link-card{padding:28px 24px;text-decoration:none;border-right:1px solid var(--border);transition:background .2s,transform .2s}.link-card:last-child{border-right:0}.link-card:hover{background:var(--surface);transform:translateY(-2px)}.link-card h2{font-size:19px;margin:0 0 8px}.link-card p{color:var(--muted);font-size:14px;margin:0}.arrow{display:block;color:var(--accent);margin-top:20px;font-size:14px}
+.blog-preview{margin-top:70px;padding:28px 0;border-top:1px solid var(--border)}.blog-preview-header{display:flex;justify-content:space-between;align-items:center;gap:20px}.blog-preview-header a{color:var(--accent);font-size:14px;text-decoration:none}.blog-preview p{color:var(--muted);margin:8px 0 0}
+footer{max-width:var(--max);margin:auto;padding:0 24px 35px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:20px}footer p{margin:0}.admin-login{color:#667a90;text-decoration:none}.admin-login:hover{color:var(--accent)}
+@media(max-width:800px){.links{grid-template-columns:repeat(2,1fr)}.link-card:nth-child(2){border-right:0}.link-card:nth-child(-n+2){border-bottom:1px solid var(--border)}}
+@media(max-width:600px){.header-inner{padding:15px 18px;align-items:flex-start}.brand{flex-direction:column;gap:0}nav{gap:14px;flex-wrap:wrap;justify-content:flex-end}nav a{font-size:13px}main{padding:62px 18px 50px}.hero{margin-bottom:52px}.hero h1{font-size:46px}.hero p{font-size:17px}.links{grid-template-columns:1fr}.link-card{border-right:0!important;border-bottom:1px solid var(--border)}.link-card:last-child{border-bottom:0}.blog-preview{margin-top:52px}footer{padding:0 18px 28px;flex-direction:column}}
+</style>
 </head>
-
-
 <body>
-
-
-<!-- ==============================
-     HEADER
-     ============================== -->
-
-<header>
-
-    <h1>KJ5QVW</h1>
-
-    <p>
-        Liam Sanders
-    </p>
-
-</header>
-
-
-<!-- ==============================
-     NAVIGATION
-     ============================== -->
-
-<nav>
-
-    <a href="/">Home</a>
-
-    <a href="/radio/">Radio</a>
-
-    <a href="/photos/">Photos</a>
-
-    <a href="/personal/">Personal</a>
-
-    <a href="/blog/">Blog</a>
-
+<header class="site-header">
+<div class="header-inner">
+<a class="brand" href="/"><strong>Liam Sanders</strong><span>KJ5QVW</span></a>
+<nav aria-label="Main navigation">
+<a href="/" aria-current="page">Home</a>
+<a href="/radio/">Radio</a>
+<a href="/photos/">Photos</a>
+<a href="/personal/">Personal</a>
+<a href="/blog/">Blog</a>
 </nav>
-
-
-<!-- ==============================
-     MAIN CONTENT
-     ============================== -->
-
+</div>
+</header>
 <main>
-
-
-    <!-- WELCOME -->
-
-    <section class="welcome">
-
-        <h2>Howdy!</h2>
-
-        <p>
-            Welcome to my website.
-        </p>
-
-    </section>
-
-
-    <!-- SECTION SHORTCUTS -->
-
-    <section class="shortcuts">
-
-
-        <!-- RADIO -->
-
-        <a class="shortcut" href="/radio/">
-
-            <h2>Radio</h2>
-
-            <p>
-                My amateur radio equipment,
-                favorite repeaters, and QRZ profile.
-            </p>
-
-            <span class="shortcut-button">
-                Go to Radio
-            </span>
-
-        </a>
-
-
-        <!-- PHOTOS -->
-
-        <a class="shortcut" href="/photos/">
-
-            <h2>Photos</h2>
-
-            <p>
-                My photo portfolio.
-            </p>
-
-            <span class="shortcut-button">
-                View Photos
-            </span>
-
-        </a>
-
-
-        <!-- PERSONAL -->
-
-        <a class="shortcut" href="/personal/">
-
-            <h2>Personal</h2>
-
-            <p>
-                Personal interests, hobbies,
-                projects, and other information.
-            </p>
-
-            <span class="shortcut-button">
-                Personal
-            </span>
-
-        </a>
-
-    </section>
-
+<section class="hero">
+<p class="eyebrow">KJ5QVW</p>
+<h1>Liam Sanders<br><span>Amateur radio &amp; more.</span></h1>
+<p>Welcome to my corner of the internet. Explore my amateur radio setup, photography, personal interests, and writing.</p>
+</section>
+<section>
+<p class="section-label">Explore</p>
+<div class="links">
+<a class="link-card" href="/radio/"><h2>Radio</h2><p>Equipment, repeaters, organizations, and my QRZ profile.</p><span class="arrow">View radio →</span></a>
+<a class="link-card" href="/blog/"><h2>Blog</h2><p>Notes, projects, observations, and things I'm learning.</p><span class="arrow">Read the blog →</span></a>
+<a class="link-card" href="/photos/"><h2>Photos</h2><p>A collection of photography and images.</p><span class="arrow">View photos →</span></a>
+<a class="link-card" href="/personal/"><h2>Personal</h2><p>A little more about me, my interests, and my links.</p><span class="arrow">Learn more →</span></a>
+</div>
+</section>
+<section class="blog-preview">
+<div class="blog-preview-header"><p class="section-label" style="margin:0">Latest</p><a href="/blog/">All posts →</a></div>
+<p>Visit the blog for my latest posts and updates.</p>
+</section>
 </main>
-
-
-<!-- ==============================
-     FOOTER
-     ============================== -->
-
 <footer>
-
-    <p>
-        © 2026 Liam Sanders
-    </p>
-
-    <a
-        class="admin-login"
-        href="/admin/8vK3qP7mX2/"
-    >
-        Admin Login
-    </a>
-
+<p>© 2026 Liam Sanders</p>
+<a class="admin-login" href="/admin/8vK3qP7mX2/">Admin Login</a>
 </footer>
-
-
 </body>
-
 </html>
