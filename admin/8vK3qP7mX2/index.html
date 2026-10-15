@@ -292,6 +292,22 @@
 
 
         <!-- ========================= -->
+        <!-- ON-AIR STATUS -->
+        <!-- ========================= -->
+
+        <div class="card">
+            <h2>On-Air Status</h2>
+            <p style="color:#b9d9ff;">Control the live status displayed on your QRZ page.</p>
+            <p id="onAirMessage" aria-live="polite">Loading current status…</p>
+            <div class="form-buttons">
+                <button type="button" id="onAirButton" onclick="setOnAir(true)">Go On Air</button>
+                <button type="button" id="offAirButton" class="cancel" onclick="setOnAir(false)">Off Air</button>
+                <a class="button-link" href="/on-air/" target="_blank" rel="noopener">Preview Status</a>
+            </div>
+        </div>
+
+
+        <!-- ========================= -->
         <!-- CREATE / EDIT POST -->
         <!-- ========================= -->
 
@@ -426,6 +442,61 @@
 
 
 /* =========================================================
+   ON-AIR STATUS
+   ========================================================= */
+
+async function loadOnAirStatus() {
+    const message = document.getElementById("onAirMessage");
+    try {
+        const response = await fetch("/api/on-air", { cache: "no-store" });
+        if (!response.ok) throw new Error("Unable to read status");
+        const data = await response.json();
+        message.textContent = data.onAir
+            ? "Status: ON AIR"
+            : "Status: OFF AIR";
+        message.className = data.onAir ? "success" : "";
+        document.getElementById("onAirButton").textContent =
+            data.onAir ? "Currently On Air" : "Go On Air";
+        document.getElementById("onAirButton").disabled = data.onAir;
+        document.getElementById("offAirButton").disabled = !data.onAir;
+    } catch (error) {
+        message.textContent = "Unable to load on-air status.";
+        message.className = "error";
+    }
+}
+
+async function setOnAir(onAir) {
+    const message = document.getElementById("onAirMessage");
+    const onButton = document.getElementById("onAirButton");
+    const offButton = document.getElementById("offAirButton");
+    onButton.disabled = true;
+    offButton.disabled = true;
+    message.textContent = "Updating status…";
+    message.className = "";
+
+    try {
+        const response = await fetch("/api/on-air", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ onAir })
+        });
+        if (response.status === 401) {
+            message.textContent = "Admin session expired. Please log in again.";
+            message.className = "error";
+            return;
+        }
+        if (!response.ok) throw new Error("Unable to update status");
+        await loadOnAirStatus();
+    } catch (error) {
+        message.textContent = "Unable to update on-air status.";
+        message.className = "error";
+        onButton.disabled = false;
+        offButton.disabled = false;
+    }
+}
+
+
+/* =========================================================
    GLOBAL EDIT STATE
    ========================================================= */
 
@@ -471,6 +542,7 @@ function showDashboard() {
         .style.display = "block";
 
     loadPosts();
+    loadOnAirStatus();
 
 }
 
