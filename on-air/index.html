@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KJ5QVW On-Air Status</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#071a33;color:#fff;font-family:Arial,Helvetica,sans-serif;display:grid;place-items:center;min-height:100vh;padding:12px}.status{display:flex;align-items:center;justify-content:center;gap:10px;padding:12px 18px;border:1px solid #164b82;border-radius:10px;background:#0b2547;min-width:190px;font-size:18px;font-weight:700;letter-spacing:.04em}.dot{width:11px;height:11px;border-radius:50%;background:#75869a;flex:none}.on .dot{background:#ff4545;box-shadow:0 0 10px #ff4545}.label{color:#c5d9ee}.on .label{color:#fff}.error{font-size:12px;color:#ffb6b6;font-weight:400}
+</style>
+</head>
+<body>
+<div id="status" class="status" role="status" aria-live="polite"><span class="dot"></span><span class="label">Checking status…</span></div>
+<script>
+async function refreshStatus(){
+  const box=document.getElementById("status");
+  try{
+    const response=await fetch("/api/on-air",{cache:"no-store"});
+    if(!response.ok)throw new Error("status unavailable");
+    const data=await response.json();
+    box.classList.toggle("on",data.onAir);
+    box.querySelector(".label").textContent=data.onAir?"ON AIR":"OFF AIR";
+  }catch(error){
+    box.classList.remove("on");
+    box.querySelector(".label").textContent="Status unavailable";
+  }
+}
+refreshStatus();
+setInterval(refreshStatus,10000);
+</script>
+</body>
+</html>
