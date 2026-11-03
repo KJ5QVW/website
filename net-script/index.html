@@ -69,14 +69,27 @@ const originalScript=Object.fromEntries(editableSections.map(el=>[el.dataset.edi
 let edits={};try{edits=JSON.parse(localStorage.getItem(EDIT_KEY)||"{}")||{}}catch{edits={}}
 function saveEdits(message="Script edits saved on this device"){try{localStorage.setItem(EDIT_KEY,JSON.stringify(edits));status.textContent=message;status.style.color="#7ddbb1"}catch{status.textContent="Unable to save — browser storage may be full";status.style.color="#ff9b9b"}}
 editableSections.forEach(el=>{const id=el.dataset.edit;if(typeof edits[id]==="string")el.innerHTML=edits[id];el.addEventListener("input",()=>{edits[id]=el.innerHTML;saveEdits()})});
-let lastEditor=editableSections[0];editableSections.forEach(el=>el.addEventListener("focus",()=>lastEditor=el));
-function applyCommand(command,value=null){if(!lastEditor)return;lastEditor.focus();try{document.execCommand(command,false,value)}catch(error){console.warn("Formatting command unavailable:",command,error)}edits[lastEditor.dataset.edit]=lastEditor.innerHTML;saveEdits()}
-document.querySelectorAll(".editbar [data-cmd]").forEach(button=>{button.addEventListener("mousedown",event=>event.preventDefault());button.addEventListener("click",()=>applyCommand(button.dataset.cmd))});
-document.querySelectorAll("[data-highlight]").forEach(button=>{button.addEventListener("mousedown",event=>event.preventDefault());button.addEventListener("click",()=>applyCommand("hiliteColor",button.dataset.highlight))});
-document.getElementById("textColor").addEventListener("input",event=>applyCommand("foreColor",event.target.value));
-document.getElementById("fontSize").addEventListener("change",event=>applyCommand("fontSize",event.target.value));
-document.getElementById("blockFormat").addEventListener("change",event=>applyCommand("formatBlock",event.target.value));
-document.getElementById("resetScript").addEventListener("click",()=>{if(!confirm("Restore all script wording and formatting to the original version? This cannot be undone."))return;edits={};editableSections.forEach(el=>el.innerHTML=originalScript[el.dataset.edit]);localStorage.removeItem(EDIT_KEY);saveEdits("Original script restored")});
+let lastEditor=null,savedRange=null;
+function rangeEditor(range){if(!range)return null;let node=range.commonAncestorContainer;if(node.nodeType===Node.TEXT_NODE)node=node.parentElement;return node&&node.closest?node.closest(".script[data-edit]"):null}
+function rememberSelection(){const selection=window.getSelection();if(!selection||!selection.rangeCount)return;const range=selection.getRangeAt(0);const editor=rangeEditor(range);if(editor){lastEditor=editor;savedRange=range.cloneRange()}}
+document.addEventListener("selectionchange",rememberSelection);
+editableSections.forEach(el=>{el.addEventListener("focus",()=>lastEditor=el);el.addEventListener("keyup",rememberSelection);el.addEventListener("mouseup",rememberSelection);el.addEventListener("pointerup",rememberSelection)});
+function restoreSelection(){if(!lastEditor)return false;lastEditor.focus();if(savedRange){const selection=window.getSelection();selection.removeAllRanges();selection.addRange(savedRange);return true}return false}
+function applyCommand(command,value=null){if(!restoreSelection())return;try{document.execCommand(command,false,value)}catch(error){console.warn("Formatting command unavailable:",command,error)}rememberSelection();edits[lastEditor.dataset.edit]=lastEditor.innerHTML;saveEdits()}
+const toolbar=document.querySelector(".editbar");
+toolbar.addEventListener("pointerdown",rememberSelection);
+toolbar.querySelectorAll("button[data-cmd]").forEach(button=>{button.addEventListener("mousedown",event=>event.preventDefault());button.addEventListener("click",()=>applyCommand(button.dataset.cmd))});
+toolbar.querySelectorAll("[data-highlight]").forEach(button=>{button.addEventListener("mousedown",event=>event.preventDefault());button.addEventListener("click",()=>applyCommand("hiliteColor",button.dataset.highlight))});
+const colorInput=document.getElementById("textColor");
+colorInput.addEventListener("pointerdown",rememberSelection);
+colorInput.addEventListener("change",event=>applyCommand("foreColor",event.target.value));
+const fontSize=document.getElementById("fontSize");
+fontSize.addEventListener("pointerdown",rememberSelection);
+fontSize.addEventListener("change",event=>applyCommand("fontSize",event.target.value));
+const blockFormat=document.getElementById("blockFormat");
+blockFormat.addEventListener("pointerdown",rememberSelection);
+blockFormat.addEventListener("change",event=>applyCommand("formatBlock",event.target.value));
+document.getElementById("resetScript").addEventListener("click",()=>{if(!confirm("Restore all script wording and formatting to the original version? This cannot be undone."))return;edits={};editableSections.forEach(el=>el.innerHTML=originalScript[el.dataset.edit]);localStorage.removeItem(EDIT_KEY);savedRange=null;saveEdits("Original script restored")});
 document.getElementById("export").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({exported:new Date().toISOString(),script:edits},null,2)],{type:"application/json"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="kj5qvw-net-script-backup.json";a.click();URL.revokeObjectURL(url)});
 document.getElementById("print").addEventListener("click",()=>window.print());
 const links=[...document.querySelectorAll(".sidebar a")],sections=links.map(a=>document.querySelector(a.getAttribute("href")));
