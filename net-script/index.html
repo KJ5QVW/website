@@ -15,7 +15,7 @@ header{position:sticky;top:0;z-index:5;background:rgba(7,17,31,.96);border-botto
 </style>
 </head>
 <body>
-<header><div class="head"><a class="brand" href="/">KJ5QVW <span>/ PRIVATE NET SCRIPT</span></a><div class="actions"><span class="status" id="saveStatus" aria-live="polite">Annotations save on this device</span><button class="btn" id="export">Export notes</button><button class="btn" id="print">Print</button><button class="btn" id="logout">Lock page</button></div></div></header>
+<header><div class="head"><a class="brand" href="/">KJ5QVW <span>/ PRIVATE NET SCRIPT</span></a><div class="actions"><span class="status" id="saveStatus" aria-live="polite">Annotations save on this device</span><button class="btn" id="export">Export notes</button><button class="btn" id="print">Print</button></div></div></header>
 <div class="layout">
 <aside class="sidebar" aria-label="Script sections"><p class="side-title">Jump to section</p>
 <a href="#preamble">Preamble</a><a href="#checkins">Check-ins</a><a href="#station-id">Station ID</a><a href="#business">Business</a><a href="#announcements">Announcements / Comments</a><a href="#buy-sell">Buy / Sell</a><a href="#information">Information Exchange</a><a href="#late-checkins">Late Check-ins</a><a href="#conclusion">Conclusion</a>
@@ -78,9 +78,6 @@ document.getElementById("export").addEventListener("click",()=>{
  const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="kj5qvw-net-script-notes.json";a.click();URL.revokeObjectURL(url);
 });
 document.getElementById("print").addEventListener("click",()=>window.print());
-document.getElementById("logout").addEventListener("click",async()=>{
- try{await fetch("/api/net-script/logout",{method:"POST"})}finally{location.reload()}
-});
 const links=[...document.querySelectorAll(".sidebar a")],sections=links.map(a=>document.querySelector(a.getAttribute("href")));
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(a=>a.classList.toggle("active",a.hash==="#"+entry.target.id))}}),{rootMargin:"-15% 0px -70% 0px"});
 sections.forEach(s=>s&&observer.observe(s));
